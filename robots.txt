@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fuuckuyooou-sys.github.io/sitemap.xml

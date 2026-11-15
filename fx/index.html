@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>전세계 실시간 환율 계산기 | 166개 통화 환전 수수료까지 — 환율노트</title>
+<meta name="description" content="166개국 통화를 실시간 환율로 바로 계산하세요. 원화↔달러·엔·동·바트·유로를 한 화면에서 동시 비교하고, 은행·트래블카드 환전 수수료(스프레드)를 반영한 실제 받는 금액까지 확인할 수 있습니다. 회원가입·설치 없이 무료.">
+<meta name="keywords" content="환율 계산기, 실시간 환율, 달러 환율, 엔화 환율, 베트남 동 환율, 태국 바트, 환전 수수료, 트래블카드, 스프레드, 환율 조회">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="환율노트">
+<meta name="theme-color" content="#0c1524">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="canonical" href="https://fuuckuyooou-sys.github.io/fx/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="환율노트">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="전세계 실시간 환율 계산기 — 166개 통화, 수수료까지 반영">
+<meta property="og:description" content="달러·엔·동·바트·유로를 한 번에. 기준 환율과 환전 수수료(스프레드)를 반영한 실제 받는 금액을 바로 확인하세요.">
+<meta property="og:url" content="https://fuuckuyooou-sys.github.io/fx/">
+<meta property="og:image" content="https://fuuckuyooou-sys.github.io/salary/og-image.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="전세계 실시간 환율 계산기 — 환율노트">
+<meta name="twitter:description" content="166개국 통화 실시간 환율 계산 · 환전 수수료 반영 실구매 금액 비교">
+
+<link rel="preconnect" href="https://open.er-api.com" crossorigin>
+<link rel="preconnect" href="https://api.frankfurter.dev">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230f9d76'/%3E%3Ctext x='50' y='72' font-size='58' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3E%E2%82%A9%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/styles.css">
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Google AdSense 스크립트 (pub-2493112023638381)
+     애드센스 승인 후 아래 주석을 해제하면 본문의 광고 슬롯이 활성화됩니다.
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2493112023638381" crossorigin="anonymous"></script>
+     ═══════════════════════════════════════════════════════════════ -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "환율노트 — 전세계 실시간 환율 계산기",
+      "url": "https://fuuckuyooou-sys.github.io/fx/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "ko-KR",
+      "description": "166개국 통화의 실시간 환율을 조회하고, 환전 수수료(스프레드)를 반영한 실구매 금액을 계산하는 무료 웹 앱.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+      "featureList": [
+        "166개국 통화 실시간 환율 조회",
+        "국가명·통화코드로 즉시 검색",
+        "여러 통화 동시 환산",
+        "은행·트래블카드 환전 수수료 반영 계산"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "환율은 언제, 어떤 기준으로 갱신되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "exchangerate-api.com이 하루 한 번 고시하는 시장 기준 환율을 사용하며, 화면 상단에 기준 시각(KST)을 표시합니다. 은행의 매매기준율과는 산출 방식이 달라 0.1% 안팎의 차이가 날 수 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "은행에서 알려주는 환율과 똑같나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "아닙니다. 이 사이트의 숫자는 수수료가 붙기 전 시장 중간환율입니다. 은행·카드사는 여기에 자체 스프레드와 우대율을 적용해 살 때·팔 때 환율을 따로 고시합니다. 그래서 계산기에 스프레드를 입력하면 실제 받는 금액에 가까워집니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "환전 수수료(스프레드)는 어떻게 반영되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "외화를 살 때는 기준 환율에 스프레드를 더한 값으로, 팔 때는 뺀 값으로 계산합니다. 예를 들어 스프레드 1.75%라면 달러를 살 때 1달러당 기준 환율의 1.0175배를 지불하게 됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "여러 통화를 동시에 비교할 수 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "네. 금액과 기준 통화를 입력하면 '자주 쓰는 통화' 보드에서 달러·엔·유로·동·바트 등 최대 24개 통화로 한 번에 환산됩니다. 보드에 통화를 추가하거나 빼면 다음 방문에도 그대로 유지됩니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "인터넷이 끊기거나 API가 응답하지 않으면 어떻게 되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ECB 기준 환율(2차 소스)을 먼저 시도하고, 그것도 실패하면 브라우저에 저장된 마지막 환율이나 사이트에 내장된 기준 환율로 계산합니다. 이때 상단 표시가 '기준 환율'로 바뀌고 기준 시각이 함께 표시되므로, 숫자가 실시간인지 바로 알 수 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "베트남 동처럼 0이 많은 통화는 어떻게 읽나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "계산기는 자릿수를 쉼표로 구분해 표시합니다. 베트남 동은 100동 단위로 묶어 생각하면 편합니다. 예를 들어 100,000동은 10만동이며, 계산기 아래 환율 표에서 100동이 몇 원인지 바로 확인할 수 있습니다." }
+        },
+        {
+          "@type": "Question",
+          "name": "해외 카드 결제에도 이 환율이 적용되나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "카드 결제는 결제 승인 시점의 국제브랜드 환율과 카드사 해외이용수수료(보통 0.2~0.6%)가 더해집니다. 트래블카드는 충전 시점의 환율이 적용되므로 이 계산기로 충전 타이밍을 가늠하는 용도로 쓰면 좋습니다." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="환율노트 홈">
+      <span class="brand-mark" aria-hidden="true">₩</span>
+      환율노트 <small>FX NOTE</small>
+    </a>
+    <span class="status-pill" id="statusPill" role="status" aria-live="polite">
+      <span class="dot" aria-hidden="true"></span>
+      <span id="statusText">환율 불러오는 중…</span>
+    </span>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>전세계 <span class="hl">실시간 환율</span> 계산기</h1>
+    <p>166개국 통화를 검색하고, 환전 수수료(스프레드)까지 반영한 <strong>실제 받는 금액</strong>을 바로 확인하세요.</p>
+    <div class="ticker" id="ticker" aria-label="주요 통화 환율"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       [AD SLOT 1] 본문 상단 · 반응형
+       애드센스 승인 후 아래 주석을 풀고 data-ad-slot 값만 교체하세요.
+       (pub-2493112023638381)
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2493112023638381"
+       data-ad-slot="0000000000"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="ad-slot" data-ad="top" aria-hidden="true">광고 영역 · AD SLOT 1</div>
+
+  <section class="card conv" aria-labelledby="calcTitle">
+    <h2 id="calcTitle" class="visually-hidden">환율 계산기</h2>
+
+    <div class="seg" role="tablist" aria-label="환전 방향 선택">
+      <button type="button" id="segBuy" role="tab" aria-selected="true">외화 살 때 <span style="font-weight:600;opacity:.7">원화 → 외화</span></button>
+      <button type="button" id="segSell" role="tab" aria-selected="false">외화 팔 때 <span style="font-weight:600;opacity:.7">외화 → 원화</span></button>
+    </div>
+
+    <div class="conv-grid">
+      <div class="field">
+        <label class="field-label" for="amountInput">가진 돈</label>
+        <div class="picker">
+          <div class="io">
+            <button type="button" class="cur-btn" id="baseBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="기준 통화 선택">
+              <span class="fl">🇰🇷</span><span class="cd">KRW</span><span class="nm">대한민국 원</span>
+            </button>
+            <input id="amountInput" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+                   value="1,000,000" aria-label="금액 입력" placeholder="0">
+          </div>
+          <div class="picker-panel" id="basePanel" role="dialog" aria-label="기준 통화 선택">
+            <div class="picker-search">
+              <input type="search" placeholder="국가·통화 검색 (예: 베트남, 달러, USD)" aria-label="기준 통화 검색" autocomplete="off">
+            </div>
+            <div class="picker-filters" role="group" aria-label="지역 필터"></div>
+            <ul class="picker-list" role="listbox" aria-label="통화 목록"></ul>
+          </div>
+        </div>
+        <div class="chips" id="amountChips"></div>
+      </div>
+
+      <div class="swap-row">
+        <button type="button" class="swap" id="swapBtn" aria-label="두 통화를 서로 바꾸기" title="통화 바꾸기">⇄</button>
+      </div>
+
+      <div class="field">
+        <span class="field-label" id="outLabel">받는 돈</span>
+        <div class="picker">
+          <div class="io out">
+            <button type="button" class="cur-btn" id="targetBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="outLabel">
+              <span class="fl">🇺🇸</span><span class="cd">USD</span><span class="nm">미국 달러</span>
+            </button>
+            <div class="value" id="outValue" aria-live="polite">0</div>
+            <span class="visually-hidden" id="outCode">USD</span>
+          </div>
+          <div class="picker-panel" id="targetPanel" role="dialog" aria-label="받는 통화 선택">
+            <div class="picker-search">
+              <input type="search" placeholder="국가·통화 검색 (예: 일본, 엔, JPY)" aria-label="받는 통화 검색" autocomplete="off">
+            </div>
+            <div class="picker-filters" role="group" aria-label="지역 필터"></div>
+            <ul class="picker-list" role="listbox" aria-label="통화 목록"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rate-line">
+      <span id="rateText">환율을 불러오는 중…</span>
+      <span class="tag zero" id="feeTag">수수료 미반영</span>
+      <span class="rate-actions">
+        <button class="copy-btn" id="copyBtn" type="button">결과 복사</button>
+        <button class="copy-btn" id="refreshBtn" type="button" title="환율 새로고침">↻ 갱신</button>
+      </span>
+    </div>
+
+    <div class="fees">
+      <div class="fees-head">
+        <h3>환전 수수료(스프레드) 반영</h3>
+        <span class="hint">참고값 · 직접 입력할 수 있어요</span>
+      </div>
+      <div class="presets" id="presets" role="group" aria-label="환전 수단 선택"></div>
+      <div class="spread-row">
+        <label for="spreadInput">스프레드</label>
+        <div class="spread-input">
+          <input id="spreadInput" type="number" min="0" max="20" step="0.1" value="0" inputmode="decimal" aria-describedby="modeNote">
+          <span>%</span>
+        </div>
+        <span class="mode-note" id="modeNote">외화를 살 때는 기준 환율에 스프레드를 더해 계산합니다.</span>
+      </div>
+    </div>
+
+    <p class="note" id="sourceText">출처를 확인하는 중…</p>
+  </section>
+
+  <section class="sec" aria-labelledby="boardTitle">
+    <div class="sec-head">
+      <div>
+        <h2 id="boardTitle">자주 쓰는 통화 한눈에</h2>
+        <p>입력한 금액을 여러 통화로 동시에 환산합니다. 카드를 누르면 그 통화 기준으로 바뀌어요.</p>
+      </div>
+      <button class="btn-ghost" id="addBtn" type="button">＋ 통화 추가</button>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       [AD SLOT 2] 본문 중간 · 반응형 (pub-2493112023638381)
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2493112023638381"
+       data-ad-slot="0000000000"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="ad-slot" data-ad="mid" aria-hidden="true">광고 영역 · AD SLOT 2</div>
+
+  <section class="sec" aria-labelledby="cmpTitle2">
+    <div class="sec-head">
+      <div>
+        <h2 id="cmpTitle2">어디서 환전하면 유리할까</h2>
+        <p id="cmpTitle">수수료를 반영해 실제로 받는 금액을 비교합니다.</p>
+      </div>
+    </div>
+    <div class="card compare">
+      <div class="cmp-scroll">
+        <table class="cmp">
+          <caption class="visually-hidden">환전 수단별 실구매 금액 비교표</caption>
+          <thead>
+            <tr><th scope="col">환전 방법</th><th scope="col">스프레드</th><th scope="col">받는 금액</th><th scope="col">기준 대비</th></tr>
+          </thead>
+          <tbody id="cmpBody"></tbody>
+        </table>
+      </div>
+      <p class="note" id="cmpFoot"></p>
+      <p class="note">※ 스프레드와 우대율은 금융사 정책에 따라 자주 바뀌는 참고용 값입니다. 트래블카드는 충전 수수료가 0%인 대신 남은 외화를 원화로 되돌릴 때 수수료(예: 1%)가 붙는 경우가 있으니, 실제 조건은 카드사 공식 안내를 확인하세요.</p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="tableTitle">
+    <div class="sec-head">
+      <div>
+        <h2 id="tableTitle">전체 166개 통화 환율</h2>
+        <p>1단위가 원화로 얼마인지, 100만원으로 얼마를 받는지 한 번에 봅니다.</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="ico" aria-hidden="true">🔍</span>
+        <input id="rateSearch" type="search" placeholder="국가·통화 검색 (예: 태국, 바트, THB)" aria-label="전체 환율 검색" autocomplete="off">
+      </div>
+    </div>
+    <div class="rfilters" id="regionFilters" role="group" aria-label="지역 필터"></div>
+    <div class="card tbl-card" style="margin-top:12px">
+      <div class="tbl-scroll">
+        <table class="rates">
+          <thead>
+            <tr><th scope="col">통화</th><th scope="col">1단위 = 원화</th><th scope="col">100만원으로 살 때</th></tr>
+          </thead>
+          <tbody id="rateBody"></tbody>
+        </table>
+      </div>
+      <div class="table-foot">
+        <span id="rateCount"></span>
+        <span>행을 누르면 위 계산기에 적용됩니다.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="guideTitle">
+    <div class="card guide">
+      <h2 id="guideTitle">환율 계산기, 이렇게 쓰세요</h2>
+      <ol>
+        <li><strong>얼마를 바꿀지 입력</strong>하고 기준 통화를 고릅니다. 기본값은 원화 100만원입니다.</li>
+        <li><strong>외화 살 때 / 외화 팔 때</strong>를 선택합니다. 살 때는 수수료가 더해지고, 팔 때는 빠집니다.</li>
+        <li><strong>환전 수단</strong>을 고르면 스프레드가 자동 입력됩니다. 은행 창구, 은행 앱, 트래블카드, 공항 환전소 중에서 비교해 보세요.</li>
+        <li><strong>자주 쓰는 통화 보드</strong>에서 여러 통화를 동시에 확인하고, 필요한 통화는 <em>＋ 통화 추가</em>로 넣습니다.</li>
+        <li><strong>전체 환율 표</strong>에서 1단위가 몇 원인지 확인합니다. 베트남 동·인도네시아 루피아처럼 단위가 큰 통화는 100단위로 환산해 보면 감이 잡힙니다.</li>
+      </ol>
+
+      <h3>환율 숫자, 어디까지 믿어도 될까요?</h3>
+      <p>이 계산기의 기준 환율은 <strong>시장 중간환율(mid-market rate)</strong>입니다. 은행 창구에서 보는 '매매기준율'과 비슷하지만 산출 주체가 달라 0.1% 안팎 차이가 날 수 있고, 실제 창구 환율은 여기에 스프레드와 우대율이 붙습니다. 그래서 이 사이트는 <strong>기준 환율 + 스프레드</strong>를 따로 보여 주고, 두 값을 모두 화면에 남겨 둡니다. 숫자가 언제 기준인지는 상단 배지에 항상 표시됩니다.</p>
+
+      <h3>여행 전에 확인하면 좋은 것</h3>
+      <ul>
+        <li>환전은 보통 <strong>출발 1~2주 전에 나눠서</strong> 하는 편이 안전합니다. 환율은 하루에도 몇 번씩 움직입니다.</li>
+        <li>공항 환전소는 편하지만 스프레드가 큰 편이라, 급한 소액만 바꾸고 나머지는 카드·앱 환전을 쓰는 경우가 많습니다.</li>
+        <li>트래블카드는 <strong>충전 시점 환율</strong>이 적용되므로, 이 계산기로 미리 금액을 계산해 두고 유리한 날 충전하면 좋습니다.</li>
+        <li>현지 ATM 인출은 별도 수수료가 붙습니다. 1회 인출 금액을 크게 잡는 편이 유리합니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="faqTitle">
+    <div class="sec-head"><div><h2 id="faqTitle">자주 묻는 질문</h2></div></div>
+
+    <details class="faq" open>
+      <summary>환율은 언제, 어떤 기준으로 갱신되나요?</summary>
+      <div class="a"><p>exchangerate-api.com이 하루 한 번 고시하는 시장 기준 환율을 사용하고, 화면 상단과 계산기 아래에 기준 시각(KST)을 표시합니다. 새로고침 버튼(↻)으로 바로 다시 요청할 수 있고, 탭을 열어 두면 15분마다 자동으로 확인합니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>은행에서 알려주는 환율과 똑같나요?</summary>
+      <div class="a"><p>똑같지 않습니다. 이 사이트의 숫자는 수수료가 붙기 전 시장 중간환율입니다. 은행과 카드사는 여기에 자체 스프레드와 우대율을 적용해 '살 때'와 '팔 때' 환율을 따로 고시합니다. 계산기의 스프레드 값을 실제 우대 조건에 맞추면 체감 환율에 가까워집니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>환전 수수료(스프레드)는 어떻게 계산되나요?</summary>
+      <div class="a"><p>외화를 살 때는 기준 환율에 스프레드를 더하고(1 + s), 팔 때는 뺍니다(1 − s). 예를 들어 스프레드가 1.75%라면 달러를 살 때 1달러당 기준 환율의 1.0175배를 지불하는 셈입니다. 100만원어치를 바꾼다면 약 1만 7천원이 수수료로 빠지는 구조입니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>여러 통화를 동시에 비교할 수 있나요?</summary>
+      <div class="a"><p>네. 금액과 기준 통화를 입력하면 '자주 쓰는 통화' 보드에서 달러·엔·유로·동·바트·페소 등 최대 24개 통화로 한 번에 환산해 보여 줍니다. 보드에 통화를 더하거나 빼면 브라우저에 저장되어 다음 방문에도 유지됩니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>인터넷이 끊기거나 API가 응답하지 않으면요?</summary>
+      <div class="a"><p>ECB 기준 환율(2차 소스)을 먼저 시도하고, 그것도 안 되면 브라우저에 저장된 마지막 환율이나 사이트에 내장된 기준 환율로 계산합니다. 이때 상단 배지가 '실시간'에서 '기준 환율'로 바뀌고 기준 시각이 함께 표시되므로, 지금 보는 숫자가 실시간인지 바로 알 수 있습니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>베트남 동처럼 0이 많은 통화는 어떻게 읽나요?</summary>
+      <div class="a"><p>계산기는 자릿수를 쉼표로 끊어 보여 줍니다. 베트남 동은 100동 단위로 묶으면 편합니다. 예를 들어 100,000동은 10만동이고, 전체 환율 표에서 100동이 몇 원인지 바로 확인할 수 있습니다.</p></div>
+    </details>
+
+    <details class="faq">
+      <summary>해외 카드 결제에도 이 환율이 적용되나요?</summary>
+      <div class="a"><p>카드 결제에는 결제 승인 시점의 국제브랜드 환율과 카드사 해외이용수수료(보통 0.2~0.6%)가 더해집니다. 트래블카드는 충전 시점의 환율이 적용되므로, 이 계산기로 충전 금액과 타이밍을 가늠하는 용도로 쓰기 좋습니다.</p></div>
+    </details>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       [AD SLOT 3] 본문 하단 · 반응형 (pub-2493112023638381)
+  <ins class="adsbygoogle" style="display:block"
+       data-ad-client="ca-pub-2493112023638381"
+       data-ad-slot="0000000000"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+       ══════════════════════════════════════════════════════════════ -->
+  <div class="ad-slot" data-ad="bottom" aria-hidden="true">광고 영역 · AD SLOT 3</div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap rows">
+    <div><b>환율노트</b> — 전세계 실시간 환율 계산기 · 166개국 통화 · 무료</div>
+    <div>환율 출처: <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener nofollow">exchangerate-api.com</a> (시장 기준 환율, 일 1회 갱신) · 보조: <a href="https://frankfurter.dev" target="_blank" rel="noopener nofollow">ECB / frankfurter.dev</a></div>
+    <div>표시되는 환율은 시장 중간환율로, 은행·카드사의 실제 매매기준율·우대율과 다를 수 있습니다. 본 계산 결과는 참고용이며 금융 거래의 근거로 사용할 수 없습니다.</div>
+    <div>입력한 금액과 통화는 브라우저 안에서만 계산되며 서버로 전송되지 않습니다. · © 2026 환율노트</div>
+    <div><a href="../">계산기 모음</a> · <a href="../salary/">2026 퇴사 원스톱 계산기</a></div>
+  </div>
+</footer>
+
+<!-- 통화 추가 모달 -->
+<div class="modal-backdrop" id="addModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="addTitle">
+    <div class="modal-head">
+      <h3 id="addTitle">통화 추가</h3>
+      <button type="button" class="modal-x" id="addClose" aria-label="닫기">✕</button>
+    </div>
+    <div class="picker-search">
+      <input id="addSearch" type="search" placeholder="국가·통화 검색 (예: 캄보디아, KHR)" aria-label="추가할 통화 검색" autocomplete="off">
+    </div>
+    <ul class="picker-list" id="addList"></ul>
+  </div>
+</div>
+
+<script src="assets/currencies.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

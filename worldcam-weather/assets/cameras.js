@@ -147,6 +147,184 @@ window.CAMERA_DATA = [
     note: '수도고속 완간선 시노노메 분기점 부근의 실시간 교통 상황입니다.'
   },
 
+  /* ───────────── 일본 — 한국 직항 인기 도시(삿포로·후쿠오카·오키나와·교토·나고야) ───────────── */
+  {
+    id: 'jp-sapporo-tanukikoji', yt: 'TPIzbMwlrOI', name: '삿포로 다누키코지 8초메', en: 'Tanukikoji 8-chome, Sapporo',
+    city: '삿포로', country: '일본', cc: 'JP', countryEn: 'Sapporo, Hokkaido', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Hokkaido Kurashi no Yomimono',
+    lat: 43.0553, lon: 141.3530, tz: 'Asia/Tokyo',
+    tags: ['삿포로', 'sapporo', '홋카이도', 'hokkaido', '다누키코지', 'tanukikoji', '狸小路', '札幌', '스스키노', 'susukino', '일본', 'japan'],
+    note: '삿포로 다누키코지 상점가 8초메 교차로를 24시간 비추는 현지 크리에이터 라이브입니다. 눈이 오면 제설 상황도 보입니다.'
+  },
+  {
+    id: 'jp-sapporo-susukino', yt: 'wRYonRnKsKw', name: '삿포로 스스키노 교차로', en: 'Susukino Crossing, Sapporo',
+    city: '삿포로', country: '일본', cc: 'JP', countryEn: 'Sapporo, Hokkaido', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'SODANE 채널',
+    lat: 43.0556, lon: 141.3528, tz: 'Asia/Tokyo',
+    tags: ['삿포로', 'sapporo', '스스키노', 'susukino', '번화가', '홋카이도', 'hokkaido', '삿포로 눈축제', 'snow festival', '일본', 'japan'],
+    note: '삿포로 최대 번화가 스스키노 교차로의 유동인구와 날씨를 실시간으로 보여줍니다.'
+  },
+  {
+    id: 'jp-sapporo-tanukikoji4', yt: 'tN_khO1foeA', name: '삿포로 다누키코지 상점가 4초메', en: 'Tanukikoji Shopping Street 4-chome, Sapporo',
+    city: '삿포로', country: '일본', cc: 'JP', countryEn: 'Sapporo, Hokkaido', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'たぬきやLIVE',
+    lat: 43.0571, lon: 141.3521, tz: 'Asia/Tokyo',
+    tags: ['삿포로', 'sapporo', '다누키코지', 'tanukikoji', '상점가', 'shopping street', '狸小路', '홋카이도', 'hokkaido', '일본', 'japan'],
+    note: '아케이드 상점가 안쪽 4초메를 비추는 카메라로, 눈·비가 와도 상점가 분위기를 확인할 수 있습니다.'
+  },
+  {
+    id: 'jp-sapporo-moiwa', yt: 'MmOom49Vsco', name: '삿포로 모이와산 로프웨이 산정', en: 'Mt. Moiwa Ropeway Summit, Sapporo',
+    city: '삿포로', country: '일본', cc: 'JP', countryEn: 'Sapporo, Hokkaido', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'local', provider: '삿포로 모이와산 로프웨이(공식)',
+    lat: 43.0297, lon: 141.3224, tz: 'Asia/Tokyo',
+    tags: ['삿포로', 'sapporo', '모이와산', 'moiwa', '로프웨이', 'ropeway', '전망대', '야경', 'night view', '홋카이도', 'hokkaido', '일본', 'japan'],
+    note: '모이와산 산정 전망대에서 내려다보는 삿포로 시내. 로프웨이 운영기관이 직접 송출합니다.'
+  },
+  {
+    id: 'jp-sapporo-tram', yt: 'NmF-XRJddxY', name: '삿포로 시덴 주오구청 앞', en: 'Sapporo Tram, Chuo Ward Office Stop',
+    city: '삿포로', country: '일본', cc: 'JP', countryEn: 'Sapporo, Hokkaido', flag: '🇯🇵', region: 'asia',
+    cat: 'traffic', src: 'creator', provider: 'yuki nomad',
+    lat: 43.0555, lon: 141.3417, tz: 'Asia/Tokyo',
+    tags: ['삿포로', 'sapporo', '노면전차', '시덴', 'tram', 'streetcar', '주오구', '도로', '교통', '홋카이도', 'hokkaido', '일본', 'japan'],
+    note: '삿포로 시덴(노면전차) 주오구청 앞 정류장과 시내 도로 상황을 함께 보여줍니다.'
+  },
+  {
+    id: 'jp-fukuoka-tenjin', yt: '3JbsYB5OTrA', name: '후쿠오카 텐진 1초메 교차로', en: 'Tenjin 1-chome Intersection, Fukuoka',
+    city: '후쿠오카', country: '일본', cc: 'JP', countryEn: 'Fukuoka, Kyushu', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'LOG FUKUOKA',
+    lat: 33.5912, lon: 130.3986, tz: 'Asia/Tokyo',
+    tags: ['후쿠오카', 'fukuoka', '텐진', 'tenjin', '하카타', 'hakata', '규슈', 'kyushu', '번화가', '일본', 'japan'],
+    note: '후쿠오카 최대 번화가 텐진 1초메 교차로. 쇼핑·식당가의 실시간 혼잡도를 확인할 수 있습니다.'
+  },
+  {
+    id: 'jp-fukuoka-tenjin-north', yt: '0OFvn1DebVY', name: '후쿠오카 텐진키타 · 하카타항', en: 'Tenjin North & Hakata Port, Fukuoka',
+    city: '후쿠오카', country: '일본', cc: 'JP', countryEn: 'Fukuoka, Kyushu', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'local', provider: '뉴가이아 그룹(공식)',
+    lat: 33.5932, lon: 130.4007, tz: 'Asia/Tokyo',
+    tags: ['후쿠오카', 'fukuoka', '텐진', 'tenjin', '하카타항', 'hakata port', '규슈', 'kyushu', '항구', '일본', 'japan'],
+    note: '텐진 북쪽과 후쿠오카 도시고속도로·하카타항 방향을 담은 카메라입니다. 배·페리 운항 판단에 참고됩니다.'
+  },
+  {
+    id: 'jp-fukuoka-hakata-station', yt: 'nBhfgvZlzpE', name: '하카타역', en: 'Hakata Station, Fukuoka',
+    city: '후쿠오카', country: '일본', cc: 'JP', countryEn: 'Fukuoka, Kyushu', flag: '🇯🇵', region: 'asia',
+    cat: 'traffic', src: 'creator', provider: 'The Wayfarer',
+    lat: 33.5898, lon: 130.4207, tz: 'Asia/Tokyo',
+    tags: ['후쿠오카', 'fukuoka', '하카타역', 'hakata station', '하카타', 'hakata', '기차역', '규슈', 'kyushu', '일본', 'japan'],
+    note: '하카타역 앞 광장과 주변 빌딩을 24시간 비추는 카메라입니다. 야경과 일출 장면도 볼 수 있습니다.'
+  },
+  {
+    id: 'jp-naha-kokusai-kencho', yt: 'Yq8WmXplhrU', name: '나하 국제거리 (현청 북쪽 입구)', en: 'Kokusai-dori, Naha (Kencho North)',
+    city: '나하', country: '일본', cc: 'JP', countryEn: 'Naha, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'バクノビジョン',
+    lat: 26.2125, lon: 127.6797, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '나하', 'naha', '국제거리', 'kokusai dori', '국제通り', '번화가', '일본', 'japan'],
+    note: '오키나와 여행의 중심지 국제거리 북쪽 입구. 관광객 밀도와 날씨를 실시간으로 볼 수 있습니다.'
+  },
+  {
+    id: 'jp-naha-kokusai-asato', yt: 'ZBBezhwzCzY', name: '나하 국제거리 (아사토 3차로)', en: 'Kokusai-dori, Asato Crossing, Naha',
+    city: '나하', country: '일본', cc: 'JP', countryEn: 'Naha, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'バクノビジョン',
+    lat: 26.2169, lon: 127.6905, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '나하', 'naha', '국제거리', 'kokusai dori', '아사토', 'asato', '安里', '일본', 'japan'],
+    note: '국제거리 아사토 삼거리 방향. 유메타운·시장 방향 이동 동선을 확인하기 좋은 각도입니다.'
+  },
+  {
+    id: 'jp-naha-makishi', yt: 'se05Vc8g_TY', name: '나하 마키시 시장 앞', en: 'Makishi Market, Naha',
+    city: '나하', country: '일본', cc: 'JP', countryEn: 'Naha, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: '定点カメラ部沖縄',
+    lat: 26.2152, lon: 127.6881, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '나하', 'naha', '마키시', 'makishi', '시장', 'market', '牧志', '국제거리', '일본', 'japan'],
+    note: '마키시 공설시장 앞 파출소 부근 고정 카메라. 시장 골목 분위기와 날씨를 확인할 수 있습니다.'
+  },
+  {
+    id: 'jp-okinawa-busena', yt: 'VWpOgCVKoK4', name: '부세나 테라스 비치', en: 'The Busena Terrace Beach, Okinawa',
+    city: '나고', country: '일본', cc: 'JP', countryEn: 'Nago, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'local', provider: 'The Terrace Hotels(공식)',
+    lat: 26.5317, lon: 127.9366, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '부세나', 'busena', '나고', 'nago', '해변', 'beach', '리조트', 'resort', '本部', '일본', 'japan'],
+    note: '부세나 테라스 호텔의 전용 해변을 호텔 측이 직접 송출합니다. 파도·수온 판단에 참고됩니다.'
+  },
+  {
+    id: 'jp-okinawa-onna', yt: '3VuKgtoZWbQ', name: '온나손 마리부 비치', en: 'Malibu Beach, Onna Village, Okinawa',
+    city: '온나손', country: '일본', cc: 'JP', countryEn: 'Onna, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'creator', provider: '오키나와 NOW!!',
+    lat: 26.4978, lon: 127.8535, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '온나손', 'onna', '마리부', 'malibu', '해변', 'beach', '다이빙', 'marine', '태풍', '일본', 'japan'],
+    note: '온나손 마리부 해변. 해양 레저 운영 여부와 태풍 접근 시 파도 상황을 확인하는 데 쓰입니다.'
+  },
+  {
+    id: 'jp-okinawa-senaga', yt: '3e_uPkJCTNo', name: '나하공항 앞 세나가 섬', en: 'Senaga Island by Naha Airport, Okinawa',
+    city: '나하', country: '일본', cc: 'JP', countryEn: 'Naha, Okinawa', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'creator', provider: 'BANKSY GINOWAN',
+    lat: 26.1747, lon: 127.6437, tz: 'Asia/Tokyo',
+    tags: ['오키나와', 'okinawa', '나하', 'naha', '나하공항', 'naha airport', '세나가섬', 'senaga', '瀬長島', '비행기', '일본', 'japan'],
+    note: '나하공항 활주로와 세나가 섬을 함께 담아 이착륙 장면을 볼 수 있는 카메라입니다.'
+  },
+  {
+    id: 'jp-kyoto-gion', yt: 'J3xHBUgWRqc', name: '교토 기온 하나미코지', en: 'Hanamikoji Street, Gion, Kyoto',
+    city: '교토', country: '일본', cc: 'JP', countryEn: 'Kyoto', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'public', provider: '교토시 관광협회(공식)',
+    lat: 35.0037, lon: 135.7752, tz: 'Asia/Tokyo',
+    tags: ['교토', 'kyoto', '기온', 'gion', '하나미코지', 'hanamikoji', '花見小路', '게이샤', '일본', 'japan', '간사이', 'kansai'],
+    note: '기온 하나미코지의 전통 거리. 교토시 관광협회가 운영하는 공식 관광지 카메라입니다.'
+  },
+  {
+    id: 'jp-kyoto-arashiyama', yt: 'JLlY6Cg17cc', name: '교토 아라시야마 대나무숲', en: 'Arashiyama Bamboo Grove, Kyoto',
+    city: '교토', country: '일본', cc: 'JP', countryEn: 'Kyoto', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'public', provider: '교토시 관광협회(공식)',
+    lat: 35.0168, lon: 135.6713, tz: 'Asia/Tokyo',
+    tags: ['교토', 'kyoto', '아라시야마', 'arashiyama', '대나무숲', 'bamboo', '죽림', '竹林', '사가', 'saga', '일본', 'japan'],
+    note: '아라시야마 죽림 소로(대나무숲 길). 관광객이 몰리는 시간대를 피하려면 혼잡도를 확인하세요.'
+  },
+  {
+    id: 'jp-kyoto-kiyomizu', yt: 'cUnYPpK7ENk', name: '교토 기요미즈자카', en: 'Kiyomizu-zaka, Kyoto',
+    city: '교토', country: '일본', cc: 'JP', countryEn: 'Kyoto', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: '교토 관광 혼잡 상황 Live',
+    lat: 34.9951, lon: 135.7805, tz: 'Asia/Tokyo',
+    tags: ['교토', 'kyoto', '기요미즈', 'kiyomizu', '기요미즈데라', '清水寺', '기요미즈자카', '清水坂', '참배길', '일본', 'japan'],
+    note: '기요미즈데라로 오르는 기요미즈자카 참배길. 관광 성수기 혼잡도를 실시간으로 보여줍니다.'
+  },
+  {
+    id: 'jp-kyoto-fushimi', yt: 'MMeBDRfRHyA', name: '교토 후시미이나리 대사', en: 'Fushimi Inari Taisha, Kyoto',
+    city: '교토', country: '일본', cc: 'JP', countryEn: 'Kyoto', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'creator', provider: '교토 관광 혼잡 상황 Live',
+    lat: 34.9671, lon: 135.7727, tz: 'Asia/Tokyo',
+    tags: ['교토', 'kyoto', '후시미', 'fushimi', '후시미이나리', 'fushimi inari', '토리이', 'torii', '伏見稲荷', '일본', 'japan'],
+    note: '후시미이나리 대사 표대산도(오모테산도) 입구. 천 본의 토리이를 보러 가는 길의 혼잡도를 확인할 수 있습니다.'
+  },
+  {
+    id: 'jp-kyoto-philosophers', yt: 'vR7q44PEhrM', name: '교토 철학의 길', en: 'The Philosopher\u2019s Path, Kyoto',
+    city: '교토', country: '일본', cc: 'JP', countryEn: 'Kyoto', flag: '🇯🇵', region: 'asia',
+    cat: 'nature', src: 'public', provider: '교토시 관광협회(공식)',
+    lat: 35.0260, lon: 135.7948, tz: 'Asia/Tokyo',
+    tags: ['교토', 'kyoto', '철학의 길', 'philosopher', '은각사', '긴카쿠지', '산책', '벚꽃', '단풍', '일본', 'japan'],
+    note: '은각사에서 남선사로 이어지는 철학의 길. 계절 풍경과 산책로 날씨를 확인할 수 있습니다.'
+  },
+  {
+    id: 'jp-nagoya-hisaya', yt: 'TJsy_Z7wgPs', name: '나고야 히사야오도리 공원', en: 'Hisaya Odori Park, Nagoya',
+    city: '나고야', country: '일본', cc: 'JP', countryEn: 'Nagoya, Aichi', flag: '🇯🇵', region: 'asia',
+    cat: 'street', src: 'local', provider: '트리니티 라이브',
+    lat: 35.1682, lon: 136.9083, tz: 'Asia/Tokyo',
+    tags: ['나고야', 'nagoya', '히사야오도리', 'hisaya odori', '공원', 'park', '사카에', 'sakae', '아이치', 'aichi', '일본', 'japan'],
+    note: '나고야 사카에의 히사야오도리 공원. 미디어 타워·TV타워 주변 행사와 혼잡도를 볼 수 있습니다.'
+  },
+  {
+    id: 'jp-nagoya-station-west', yt: 'cJd9IIu2vio', name: '나고야역 서쪽 출구', en: 'Nagoya Station West Gate (Taiko-dori)',
+    city: '나고야', country: '일본', cc: 'JP', countryEn: 'Nagoya, Aichi', flag: '🇯🇵', region: 'asia',
+    cat: 'traffic', src: 'local', provider: '스타캣(공식)',
+    lat: 35.1706, lon: 136.8797, tz: 'Asia/Tokyo',
+    tags: ['나고야', 'nagoya', '나고야역', 'nagoya station', '다이고초', '太閤通口', '역', 'station', '아이치', 'aichi', '일본', 'japan'],
+    note: '나고야역 태합통(서쪽) 출구. 택시 승강장과 버스 흐름을 확인하기 좋습니다.'
+  },
+  {
+    id: 'jp-nagoya-station', yt: 'X304dz1zrfU', name: '나고야역 정면', en: 'Nagoya Station Front',
+    city: '나고야', country: '일본', cc: 'JP', countryEn: 'Nagoya, Aichi', flag: '🇯🇵', region: 'asia',
+    cat: 'traffic', src: 'local', provider: '스타캣(공식)',
+    lat: 35.1709, lon: 136.8816, tz: 'Asia/Tokyo',
+    tags: ['나고야', 'nagoya', '나고야역', 'nagoya station', '역', 'station', '아이치', 'aichi', '일본', 'japan'],
+    note: '나고야역 정면 광장과 주변 빌딩. 신칸센 환승 동선 확인에 참고됩니다.'
+  },
+
   /* ───────────── 대만 ───────────── */
   {
     id: 'tw-xiangshan', yt: 'z_fY1pj1VBw', name: '타이베이 샹산 전망대', en: 'Xiangshan Viewpoint, Taipei',
@@ -635,6 +813,368 @@ window.CAMERA_DATA = [
     note: '테이블마운틴과 라이언스 헤드, 테이블베이를 한 화면에 담은 카메라입니다.'
   },
 
+/* ───────────── 한국 직항 인기 여행지 — 중화권·동남아·대양주·미주·유럽 ───────────── */
+  {
+    id: 'hk-tst-harbour', yt: 'Z8NTLkEFZjg', name: '홍콩 침사추이 · 빅토리아 하버', en: 'Tsim Sha Tsui & Victoria Harbour, Hong Kong',
+    city: '홍콩', country: '홍콩', cc: 'HK', countryEn: 'Hong Kong', flag: '🇭🇰', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Brainrolling Workshop',
+    lat: 22.2936, lon: 114.1722, tz: 'Asia/Hong_Kong',
+    tags: ['홍콩', 'hong kong', '침사추이', 'tsim sha tsui', '빅토리아 하버', 'victoria harbour', '尖沙咀', '香港', '야경', '홍콩섬', 'kowloon'],
+    note: '침사추이에서 바라본 빅토리아 하버. 홍콩섬 스카이라인과 라이트쇼 시간대를 확인할 수 있습니다.'
+  },
+  {
+    id: 'hk-harbour-4k', yt: 'OtreHvXgAoA', name: '홍콩 항구 도심 4K', en: 'Hong Kong Cityscape 4K',
+    city: '홍콩', country: '홍콩', cc: 'HK', countryEn: 'Hong Kong', flag: '🇭🇰', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Brainrolling Workshop',
+    lat: 22.2950, lon: 114.1725, tz: 'Asia/Hong_Kong',
+    tags: ['홍콩', 'hong kong', '스카이라인', 'skyline', '빅토리아 하버', 'victoria harbour', '4k', '중환', 'central', '香港'],
+    note: '홍콩 도심과 항구를 담은 4K 라이브. 낮·밤 경관과 안개·비 상황을 함께 볼 수 있습니다.'
+  },
+  {
+    id: 'hk-kwuntong', yt: 'XN-ArdUrqtc', name: '홍콩 쿤통 · 동구룡 항구', en: 'Kwun Tong Waterfront, East Kowloon, Hong Kong',
+    city: '홍콩', country: '홍콩', cc: 'HK', countryEn: 'Hong Kong', flag: '🇭🇰', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Marcus Wong',
+    lat: 22.3125, lon: 114.2246, tz: 'Asia/Hong_Kong',
+    tags: ['홍콩', 'hong kong', '쿤통', 'kwun tong', '동구룡', 'east kowloon', '觀塘', '항구', 'harbour', '香港'],
+    note: '쿤통 해안에서 바라본 동구룡과 빅토리아 하버 동쪽. 카이탁 옛 활주로 방향 전망입니다.'
+  },
+  {
+    id: 'hk-tungchung', yt: 'ZbUAX0ZvTZI', name: '홍콩 퉁충 · HZMB 항구', en: 'Tung Chung & HZMB Port, Hong Kong',
+    city: '홍콩', country: '홍콩', cc: 'HK', countryEn: 'Hong Kong', flag: '🇭🇰', region: 'asia',
+    cat: 'traffic', src: 'creator', provider: 'RingBoy 介子仔',
+    lat: 22.2900, lon: 113.9444, tz: 'Asia/Hong_Kong',
+    tags: ['홍콩', 'hong kong', '퉁충', 'tung chung', '홍콩주주오대교', 'hzmb', '港珠澳大橋', '공항', 'airport', '교통', 'traffic', '東涌'],
+    note: '란타우섬 퉁충과 홍콩-주하이-마카오 대교(HZMB) 진입로·공항 주변 도로 상황을 비춥니다.'
+  },
+  {
+    id: 'vn-danang-airport', yt: 'CRFSA3L1cHU', name: '다낭 국제공항', en: 'Da Nang International Airport',
+    city: '다낭', country: '베트남', cc: 'VN', countryEn: 'Da Nang, Vietnam', flag: '🇻🇳', region: 'asia',
+    cat: 'traffic', src: 'creator', provider: 'Live Airways Vietnam',
+    lat: 16.0439, lon: 108.1994, tz: 'Asia/Ho_Chi_Minh',
+    tags: ['다낭', 'da nang', 'danang', '공항', 'airport', '베트남', 'vietnam', '한국 직항', '도착', '출발', 'Đà Nẵng'],
+    note: '다낭 국제공항 도착·출발 안내와 활주로 주변 상황을 함께 보여주는 라이브입니다.'
+  },
+  {
+    id: 'vn-danang-city', yt: 'G_G8A6JU_LI', name: '다낭 시내 (한강 동쪽)', en: 'Da Nang City (East of Han River)',
+    city: '다낭', country: '베트남', cc: 'VN', countryEn: 'Da Nang, Vietnam', flag: '🇻🇳', region: 'asia',
+    cat: 'street', src: 'public', provider: 'Phát Triển Đà Nẵng',
+    lat: 16.0544, lon: 108.2478, tz: 'Asia/Ho_Chi_Minh',
+    tags: ['다낭', 'da nang', 'danang', '한강', 'han river', '시내', 'city', '베트남', 'vietnam', 'Đà Nẵng'],
+    note: '다낭시 개발 사업 채널이 운영하는 시내 PTZ 카메라. 한강 동쪽 도로와 거리 상황을 비춥니다.'
+  },
+  {
+    id: 'vn-nhatrang-oceanus', yt: 'n8lmPY3dEfA', name: '나트랑 해변 · 오세아누스', en: 'Nha Trang Beach & Oceanus',
+    city: '나트랑', country: '베트남', cc: 'VN', countryEn: 'Nha Trang, Vietnam', flag: '🇻🇳', region: 'asia',
+    cat: 'nature', src: 'creator', provider: '아렌다 v 냐짱',
+    lat: 12.2395, lon: 109.1965, tz: 'Asia/Ho_Chi_Minh',
+    tags: ['나트랑', 'nha trang', '냐짱', '해변', 'beach', '바다', '베트남', 'vietnam', '나트랑 해변', 'Nha Trang'],
+    note: '나트랑 트란푸 해변가 오세아누스 아파트에서 바라본 바다. 파도와 해수욕 적합도를 확인할 수 있습니다.'
+  },
+  {
+    id: 'vn-nhatrang-beach', yt: '5MRY7QZqyeQ', name: '나트랑 해변 전망', en: 'Nha Trang Beach View',
+    city: '나트랑', country: '베트남', cc: 'VN', countryEn: 'Nha Trang, Vietnam', flag: '🇻🇳', region: 'asia',
+    cat: 'nature', src: 'creator', provider: 'Дядя Ваня Вьетнам',
+    lat: 12.2388, lon: 109.1967, tz: 'Asia/Ho_Chi_Minh',
+    tags: ['나트랑', 'nha trang', '냐짱', '해변', 'beach', '바다', '베트남', 'vietnam', 'Nha Trang'],
+    note: '나트랑 해변을 매일 갱신해 보여주는 라이브. 현지 날씨와 파도 상태를 함께 볼 수 있습니다.'
+  },
+  {
+    id: 'vn-phuquoc-airport', yt: 'phYngbJn9Fw', name: '푸꾸옥 국제공항', en: 'Phu Quoc International Airport',
+    city: '푸꾸옥', country: '베트남', cc: 'VN', countryEn: 'Phu Quoc, Vietnam', flag: '🇻🇳', region: 'asia',
+    cat: 'traffic', src: 'creator', provider: 'Live Airways Vietnam',
+    lat: 10.1698, lon: 103.9931, tz: 'Asia/Ho_Chi_Minh',
+    tags: ['푸꾸옥', 'phu quoc', '푸쿠옥', '공항', 'airport', '베트남', 'vietnam', '휴양지', 'resort', 'Phú Quốc'],
+    note: '푸꾸옥 국제공항의 도착·출발 보드와 활주로 주변. 우기 항공편 지연 여부를 확인하는 데 쓰입니다.'
+  },
+  {
+    id: 'th-chiangmai', yt: '61ahmhZoeKY', name: '치앙마이 시내', en: 'Chiang Mai City 4K',
+    city: '치앙마이', country: '태국', cc: 'TH', countryEn: 'Chiang Mai, Thailand', flag: '🇹🇭', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Chiang Mai Live Cam',
+    lat: 18.7883, lon: 98.9853, tz: 'Asia/Bangkok',
+    tags: ['치앙마이', 'chiang mai', '태국', 'thailand', '북부', 'north', '시내', 'city', 'เชียงใหม่'],
+    note: '치앙마이 시내를 24시간 4K로 송출하는 라이브. 우기 스콜과 미세먼지 계절 하늘 상태를 볼 수 있습니다.'
+  },
+  {
+    id: 'th-phuket-panwa', yt: 'X-h-xgKg-VA', name: '푸켓 케이프 판와 바다', en: 'Cape Panwa Sea Conditions, Phuket',
+    city: '푸켓', country: '태국', cc: 'TH', countryEn: 'Phuket, Thailand', flag: '🇹🇭', region: 'asia',
+    cat: 'nature', src: 'local', provider: 'NAMA Freediving Phuket',
+    lat: 7.8025, lon: 98.4075, tz: 'Asia/Bangkok',
+    tags: ['푸켓', 'phuket', '케이프 판와', 'cape panwa', '바다', 'sea', '파도', '다이빙', 'freediving', '태국', 'thailand'],
+    note: '푸켓 남동쪽 케이프 판와의 해상 상태. 다이빙·보트 투어 가능 여부 판단에 쓰는 카메라입니다.'
+  },
+  {
+    id: 'th-phuket-bangla', yt: 'Rsb5iWSnuK8', name: '푸켓 방라로드', en: 'Bangla Road, Patong, Phuket',
+    city: '푸켓', country: '태국', cc: 'TH', countryEn: 'Phuket, Thailand', flag: '🇹🇭', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Go Maria 4K',
+    lat: 7.8925, lon: 98.2966, tz: 'Asia/Bangkok',
+    tags: ['푸켓', 'phuket', '파통', 'patong', '방라로드', 'bangla road', '번화가', '밤거리', '태국', 'thailand'],
+    note: '푸켓 파통의 방라로드. 야간 번화가 분위기와 비 오는 날 노점 상황을 실시간으로 보여줍니다.'
+  },
+  {
+    id: 'th-phuket-sky', yt: 'n-E0UHEfssg', name: '푸켓 시내 하늘', en: 'Phuket Sky & City Horizon',
+    city: '푸켓', country: '태국', cc: 'TH', countryEn: 'Phuket, Thailand', flag: '🇹🇭', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Upsky view',
+    lat: 7.8804, lon: 98.3923, tz: 'Asia/Bangkok',
+    tags: ['푸켓', 'phuket', '하늘', 'sky', '날씨', 'weather', '몽키마운틴', 'monkey mountain', '태국', 'thailand'],
+    note: '푸켓 시내에서 몽키마운틴 방향 하늘을 고정 촬영. 우기 구름과 바람을 판단하기 좋습니다.'
+  },
+  {
+    id: 'th-phuket-patong', yt: '_nvG0c9keWI', name: '푸켓 파통 사이나미엔 로드', en: 'Sainamyen Road, Patong, Phuket',
+    city: '푸켓', country: '태국', cc: 'TH', countryEn: 'Phuket, Thailand', flag: '🇹🇭', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'Randomly Entertained',
+    lat: 7.8895, lon: 98.2969, tz: 'Asia/Bangkok',
+    tags: ['푸켓', 'phuket', '파통', 'patong', '사이나미엔', 'sainamyen', '거리', 'street', '태국', 'thailand'],
+    note: '파통 사이나미엔 로드의 상점·마사지샵 거리. 낮과 밤 유동인구를 확인할 수 있습니다.'
+  },
+  {
+    id: 'ph-moalboal', yt: 'rIcFVErHQrY', name: '세부 모알보알 해변', en: 'Moalboal Front Beach, Cebu',
+    city: '세부', country: '필리핀', cc: 'PH', countryEn: 'Cebu, Philippines', flag: '🇵🇭', region: 'asia',
+    cat: 'nature', src: 'local', provider: 'Junedive Resort',
+    lat: 9.9820, lon: 123.3686, tz: 'Asia/Manila',
+    tags: ['세부', 'cebu', '모알보알', 'moalboal', '해변', 'beach', '필리핀', 'philippines', '스쿠버', 'diving', '리조트', 'resort'],
+    note: '세부 남서쪽 모알보알 해변. 스쿠버다이빙 포인트의 파도와 조류 상황을 리조트가 직접 송출합니다.'
+  },
+  {
+    id: 'ph-quezoncity-sky', yt: 'SIdi3pCdPvA', name: '마닐라 케손시티 하늘', en: 'Quezon City Sky, Metro Manila',
+    city: '마닐라', country: '필리핀', cc: 'PH', countryEn: 'Metro Manila, Philippines', flag: '🇵🇭', region: 'asia',
+    cat: 'street', src: 'creator', provider: 'K.Richard 날씨수첩',
+    lat: 14.6760, lon: 121.0437, tz: 'Asia/Manila',
+    tags: ['마닐라', 'manila', '케손시티', 'quezon city', '필리핀', 'philippines', '하늘', 'sky', '태풍', 'typhoon', '날씨', 'weather'],
+    note: '마닐라 수도권 케손시티의 하늘을 고정 촬영. 태풍철 구름 발달과 소나기를 판단하는 데 쓰입니다.'
+  },
+  {
+    id: 'au-melbourne-city', yt: 'gEbrHdFRgpQ', name: '멜버른 시내 교차로', en: 'Melbourne City Intersection',
+    city: '멜버른', country: '호주', cc: 'AU', countryEn: 'Melbourne, Australia', flag: '🇦🇺', region: 'oceania',
+    cat: 'street', src: 'creator', provider: 'Cityscape Live',
+    lat: -37.8110, lon: 144.9640, tz: 'Australia/Melbourne',
+    tags: ['멜버른', 'melbourne', '호주', 'australia', '빅토리아', 'victoria', '시내', 'city', '거리', 'street'],
+    note: '멜버른 시내 주요 교차로의 보행자와 노면전차 흐름. 사계절 변덕스러운 날씨를 눈으로 확인할 수 있습니다.'
+  },
+  {
+    id: 'au-brisbane-city', yt: 'pIaqtdmfbZ4', name: '브리즈번 시내 하늘', en: 'Brisbane City & Weather',
+    city: '브리즈번', country: '호주', cc: 'AU', countryEn: 'Brisbane, Australia', flag: '🇦🇺', region: 'oceania',
+    cat: 'street', src: 'creator', provider: 'Brisbane Live',
+    lat: -27.4698, lon: 153.0251, tz: 'Australia/Brisbane',
+    tags: ['브리즈번', 'brisbane', '호주', 'australia', '퀸즐랜드', 'queensland', '날씨', 'weather', '시내', 'city'],
+    note: '브리즈번 시내와 하늘을 함께 담은 라이브. 여름 스톰 시즌 접근 상황을 확인하기 좋습니다.'
+  },
+  {
+    id: 'au-brisbane-airport', yt: '7dlz_g6j4Nk', name: '브리즈번 공항', en: 'Brisbane Airport (BNE)',
+    city: '브리즈번', country: '호주', cc: 'AU', countryEn: 'Brisbane, Australia', flag: '🇦🇺', region: 'oceania',
+    cat: 'traffic', src: 'creator', provider: 'LJK Aviation',
+    lat: -27.3842, lon: 153.1175, tz: 'Australia/Brisbane',
+    tags: ['브리즈번', 'brisbane', '공항', 'airport', 'bne', '호주', 'australia', '퀸즐랜드', 'queensland', '활주로', 'runway'],
+    note: '브리즈번 공항 활주로와 관제 상황. 국제선 도착·출발 지연 여부를 확인할 수 있습니다.'
+  },
+  {
+    id: 'us-la-hollywood', yt: 'YHWJd_DNgKY', name: 'LA 할리우드', en: 'Hollywood, Los Angeles (LA Times)',
+    city: '로스앤젤레스', country: '미국', cc: 'US', countryEn: 'Los Angeles, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'broadcaster', provider: 'LA Times Studios',
+    lat: 34.1016, lon: -118.3267, tz: 'America/Los_Angeles',
+    tags: ['LA', '로스앤젤레스', 'los angeles', '할리우드', 'hollywood', '미국', 'usa', '캘리포니아', 'california'],
+    note: 'LA 할리우드 일대를 LA타임스가 운영하는 24시간 라이브 피드로 보여줍니다.'
+  },
+  {
+    id: 'us-santa-monica', yt: 'v97JpT3ZA0w', name: '샌타모니카 해변 · 부두', en: 'Santa Monica Beach & Pier',
+    city: '로스앤젤레스', country: '미국', cc: 'US', countryEn: 'Los Angeles, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'nature', src: 'webcam', provider: 'explore.org',
+    lat: 34.0083, lon: -118.4983, tz: 'America/Los_Angeles',
+    tags: ['샌타모니카', 'santa monica', 'LA', 'los angeles', '부두', 'pier', '해변', 'beach', '미국', 'usa', '캘리포니아'],
+    note: '샌타모니카 해변과 부두. 일몰 시간대와 파도·안개 상황을 확인할 수 있습니다.'
+  },
+  {
+    id: 'us-venice-beach', yt: '0IgjqQzibqE', name: '베니스 비치 보드워크', en: 'Venice Beach Boardwalk',
+    city: '로스앤젤레스', country: '미국', cc: 'US', countryEn: 'Los Angeles, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'nature', src: 'creator', provider: 'Venice Vive',
+    lat: 33.9870, lon: -118.4730, tz: 'America/Los_Angeles',
+    tags: ['베니스', 'venice beach', 'LA', 'los angeles', '보드워크', 'boardwalk', '해변', 'beach', '미국', 'usa'],
+    note: '베니스 비치 보드워크와 광장. 주말 혼잡도와 서핑 파도를 함께 볼 수 있습니다.'
+  },
+  {
+    id: 'us-sf-pier23', yt: 'PDKGik7Np88', name: '샌프란시스코 피어 23', en: 'Pier 23, San Francisco Bay',
+    city: '샌프란시스코', country: '미국', cc: 'US', countryEn: 'San Francisco, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'webcam', provider: 'StreamTime Live',
+    lat: 37.8083, lon: -122.4019, tz: 'America/Los_Angeles',
+    tags: ['샌프란시스코', 'san francisco', '피어23', 'pier 23', '베이', 'bay', '미국', 'usa', '캘리포니아'],
+    note: '샌프란시스코 베이 피어 23의 해상·부두 상황. 안개(칼 포그)와 페리 운항을 확인할 수 있습니다.'
+  },
+  {
+    id: 'us-sf-treasure-island', yt: 'BSWhGNXxT9A', name: '샌프란시스코 베이 · 금문교', en: 'San Francisco Skyline & Golden Gate',
+    city: '샌프란시스코', country: '미국', cc: 'US', countryEn: 'San Francisco, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'webcam', provider: 'Teleport.camera',
+    lat: 37.8236, lon: -122.3690, tz: 'America/Los_Angeles',
+    tags: ['샌프란시스코', 'san francisco', '금문교', 'golden gate', '스카이라인', 'skyline', '미국', 'usa', '베이', 'bay'],
+    note: '트레저 아일랜드에서 바라본 샌프란시스코 스카이라인과 금문교 방향.'
+  },
+  {
+    id: 'us-lasvegas-strip', yt: 'C1hrfERKzbg', name: '라스베이거스 스트립', en: 'Las Vegas Strip',
+    city: '라스베이거스', country: '미국', cc: 'US', countryEn: 'Las Vegas, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'creator', provider: 'LV Strip Cam',
+    lat: 36.1147, lon: -115.1728, tz: 'America/Los_Angeles',
+    tags: ['라스베이거스', 'las vegas', '베이거스', 'vegas', '스트립', 'strip', '미국', 'usa', '네바다', 'nevada'],
+    note: '라스베이거스 스트립 대로의 실시간 교통과 네온사인. 사막 한낮 더위와 야간 기온을 비교해 볼 수 있습니다.'
+  },
+  {
+    id: 'us-fremont-street', yt: 'uaIhqF1hz0I', name: '라스베이거스 프리몬트 스트리트', en: 'Fremont Street Experience, Las Vegas',
+    city: '라스베이거스', country: '미국', cc: 'US', countryEn: 'Las Vegas, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'creator', provider: 'Justin Clouse',
+    lat: 36.1700, lon: -115.1430, tz: 'America/Los_Angeles',
+    tags: ['라스베이거스', 'las vegas', '프리몬트', 'fremont', '다운타운', 'downtown', '미국', 'usa', '네바다'],
+    note: '다운타운 라스베이거스 프리몬트 스트리트 체험 거리. 야간 조명 쇼 시간대를 확인할 수 있습니다.'
+  },
+  {
+    id: 'us-bellagio', yt: 'KJuGU7v5oYw', name: '벨라지오 식물원·분수대', en: 'Bellagio Conservatory, Las Vegas',
+    city: '라스베이거스', country: '미국', cc: 'US', countryEn: 'Las Vegas, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'webcam', provider: 'EarthCam',
+    lat: 36.1126, lon: -115.1740, tz: 'America/Los_Angeles',
+    tags: ['라스베이거스', 'las vegas', '벨라지오', 'bellagio', '분수', 'fountain', '미국', 'usa', '네바다'],
+    note: '벨라지오 호텔 식물원 정원. 계절 장식과 분수쇼 주변 혼잡도를 볼 수 있습니다.'
+  },
+  {
+    id: 'us-chicago-lakefront', yt: 'j2P0SoAh8Pc', name: '시카고 레이크프론트', en: 'Chicago Lakefront & Navy Pier',
+    city: '시카고', country: '미국', cc: 'US', countryEn: 'Chicago, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'nature', src: 'creator', provider: 'Lakefront Live',
+    lat: 41.8917, lon: -87.6050, tz: 'America/Chicago',
+    tags: ['시카고', 'chicago', '레이크프론트', 'lakefront', '네이비피어', 'navy pier', '미시간호', 'lake michigan', '미국', 'usa'],
+    note: '미시간호를 낀 시카고 레이크프론트와 네이비 피어. 겨울 한파·바람 상황을 확인하기 좋습니다.'
+  },
+  {
+    id: 'us-chicago-skyline', yt: '2Y8DA2nhynw', name: '시카고 스카이라인', en: 'Chicago Skyline',
+    city: '시카고', country: '미국', cc: 'US', countryEn: 'Chicago, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'creator', provider: 'Chicago Southern Skyline',
+    lat: 41.8781, lon: -87.6298, tz: 'America/Chicago',
+    tags: ['시카고', 'chicago', '스카이라인', 'skyline', '윌리스타워', 'willis tower', '미국', 'usa', '일리노이'],
+    note: '시카고 다운타운 스카이라인을 담은 24시간 카메라. 호수 안개와 일몰 시간대가 잘 보입니다.'
+  },
+  {
+    id: 'us-seattle-lake', yt: 'NCzKkn0wD30', name: '시애틀 워싱턴호', en: 'Lake Washington, Seattle (UW)',
+    city: '시애틀', country: '미국', cc: 'US', countryEn: 'Seattle, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'nature', src: 'public', provider: '워싱턴대학교(UW Video)',
+    lat: 47.6505, lon: -122.3070, tz: 'America/Los_Angeles',
+    tags: ['시애틀', 'seattle', '워싱턴호', 'lake washington', '워싱턴대', 'uw', '미국', 'usa', '워싱턴주'],
+    note: '워싱턴대 캠퍼스에서 바라본 워싱턴호와 레이니어산 방향. 비·안개가 잦은 시애틀 날씨를 그대로 보여줍니다.'
+  },
+  {
+    id: 'us-seattle-campus', yt: '9-hGCRgqMMs', name: '시애틀 워싱턴대 캠퍼스', en: 'UW Campus, Seattle',
+    city: '시애틀', country: '미국', cc: 'US', countryEn: 'Seattle, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'street', src: 'public', provider: '워싱턴대학교(UW Video)',
+    lat: 47.6553, lon: -122.3035, tz: 'America/Los_Angeles',
+    tags: ['시애틀', 'seattle', '워싱턴대', 'university of washington', 'uw', '캠퍼스', 'campus', '미국', 'usa'],
+    note: '워싱턴대 캠퍼스 안 광장과 건물. 시애틀 시내 북쪽의 실시간 하늘·눈 상황을 확인할 수 있습니다.'
+  },
+  {
+    id: 'us-fortworth-tower55', yt: 'blcDjPvPbss', name: '댈러스 · 포트워스 타워 55', en: 'Tower 55, Fort Worth (Dallas–Fort Worth)',
+    city: '댈러스', country: '미국', cc: 'US', countryEn: 'Dallas–Fort Worth, USA', flag: '🇺🇸', region: 'americas',
+    cat: 'traffic', src: 'webcam', provider: 'Virtual Railfan',
+    lat: 32.7530, lon: -97.3280, tz: 'America/Chicago',
+    tags: ['댈러스', 'dallas', '포트워스', 'fort worth', 'dfw', '텍사스', 'texas', '철도', 'railcam', '미국', 'usa'],
+    note: '댈러스-포트워스 지역 타워 55 철도 교차점. 광활한 텍사스 하늘과 폭풍 접근을 볼 수 있습니다.'
+  },
+  {
+    id: 'it-rome-venezia', yt: 'wwkVJ-jL3CI', name: '로마 피아자 베네치아', en: 'Piazza Venezia, Rome',
+    city: '로마', country: '이탈리아', cc: 'IT', countryEn: 'Rome, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'local', provider: 'Roma Five Suites',
+    lat: 41.8960, lon: 12.4824, tz: 'Europe/Rome',
+    tags: ['로마', 'rome', 'roma', '피아자 베네치아', 'piazza venezia', '이탈리아', 'italy', '콜로세오', 'colosseum'],
+    note: '로마 피아자 베네치아와 비토리아노 광장. 콜로세오 방향 보행 흐름을 확인할 수 있습니다.'
+  },
+  {
+    id: 'it-rome-stpeter', yt: 'gXm3PGF4z0s', name: '로마 성 베드로 대성당', en: 'St. Peter\u2019s Basilica, Rome',
+    city: '로마', country: '이탈리아', cc: 'IT', countryEn: 'Rome, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'webcam', provider: 'Webcam Italia',
+    lat: 41.9022, lon: 12.4539, tz: 'Europe/Rome',
+    tags: ['로마', 'rome', 'roma', '바티칸', 'vatican', '성베드로', 'st peter', '이탈리아', 'italy'],
+    note: '프라티 지구에서 바라본 성 베드로 대성당 돔. 바티칸 방문 전 인파와 하늘을 확인할 수 있습니다.'
+  },
+  {
+    id: 'it-rome-monte-mario', yt: 'IZtH_58-jKI', name: '로마 몬테 마리오 전망', en: 'Monte Mario, Rome',
+    city: '로마', country: '이탈리아', cc: 'IT', countryEn: 'Rome, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'webcam', provider: 'Webcam Italia',
+    lat: 41.9248, lon: 12.4478, tz: 'Europe/Rome',
+    tags: ['로마', 'rome', 'roma', '몬테 마리오', 'monte mario', '전망', 'panorama', '이탈리아', 'italy'],
+    note: '로마에서 가장 높은 언덕 몬테 마리오에서 내려다보는 도심 파노라마.'
+  },
+  {
+    id: 'it-rome-vatican360', yt: 'NMC7TRAalOo', name: '로마 바티칸 야경 360', en: 'Vatican & St. Peter\u2019s Night 360, Rome',
+    city: '로마', country: '이탈리아', cc: 'IT', countryEn: 'Rome, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'webcam', provider: 'RMS RAMSAT Multimedia',
+    lat: 41.9025, lon: 12.4545, tz: 'Europe/Rome',
+    tags: ['로마', 'rome', 'roma', '바티칸', 'vatican', '야경', 'night view', '360', '이탈리아', 'italy'],
+    note: '바티칸과 성 베드로 대성당을 360도로 담은 야경 카메라. 로마의 저녁 기온과 조명을 함께 볼 수 있습니다.'
+  },
+  {
+    id: 'it-milan-skyline', yt: 'dsoM6TYIkOI', name: '밀라노 스카이라인', en: 'Milan Skyline',
+    city: '밀라노', country: '이탈리아', cc: 'IT', countryEn: 'Milan, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'local', provider: 'Espansione TV',
+    lat: 45.4642, lon: 9.1900, tz: 'Europe/Rome',
+    tags: ['밀라노', 'milan', 'milano', '스카이라인', 'skyline', '이탈리아', 'italy', '롬바르디아', 'lombardy'],
+    note: '밀라노 신도심(포르타 누오바) 마천루 스카이라인. 안개 낀 겨울 아침 풍경도 자주 잡힙니다.'
+  },
+  {
+    id: 'it-milan-duomo', yt: 'Iuc9BjSriaM', name: '밀라노 두오모 광장', en: 'Duomo di Milano',
+    city: '밀라노', country: '이탈리아', cc: 'IT', countryEn: 'Milan, Italy', flag: '🇮🇹', region: 'europe',
+    cat: 'street', src: 'local', provider: 'Duomo Milano TV',
+    lat: 45.4641, lon: 9.1919, tz: 'Europe/Rome',
+    tags: ['밀라노', 'milan', 'milano', '두오모', 'duomo', '대성당', '광장', 'piazza', '이탈리아', 'italy'],
+    note: '밀라노 두오모 대성당과 광장. 관광객 밀집도와 광장 행사 여부를 확인할 수 있습니다.'
+  },
+  {
+    id: 'pl-warsaw', yt: 'Gtm6fq73BZU', name: '바르샤바 파노라마 · 국립경기장', en: 'Warsaw Panorama & National Stadium',
+    city: '바르샤바', country: '폴란드', cc: 'PL', countryEn: 'Warsaw, Poland', flag: '🇵🇱', region: 'europe',
+    cat: 'street', src: 'creator', provider: 'Warsaw Livestream',
+    lat: 52.2370, lon: 21.0450, tz: 'Europe/Warsaw',
+    tags: ['바르샤바', 'warsaw', 'warszawa', '폴란드', 'poland', '국립경기장', 'national stadium', '비스와', 'vistula'],
+    note: '비스와강 너머 바르샤바 스카이라인과 국립경기장. 겨울 안개와 강물 수위를 볼 수 있습니다.'
+  },
+  {
+    id: 'es-madrid-skyline', yt: '2QXqf9p-L80', name: '마드리드 스카이라인', en: 'Madrid Skyline',
+    city: '마드리드', country: '스페인', cc: 'ES', countryEn: 'Madrid, Spain', flag: '🇪🇸', region: 'europe',
+    cat: 'street', src: 'creator', provider: 'Madrid Live Skyline',
+    lat: 40.4168, lon: -3.7038, tz: 'Europe/Madrid',
+    tags: ['마드리드', 'madrid', '스페인', 'spain', '스카이라인', 'skyline', '시내', 'city'],
+    note: '마드리드 도심 스카이라인을 24시간 담은 라이브. 고원 도시 특유의 맑은 하늘과 일몰을 볼 수 있습니다.'
+  },
+  {
+    id: 'de-frankfurt-skyline', yt: 'FydsHtlfHHM', name: '프랑크푸르트 스카이라인', en: 'Frankfurt Skyline',
+    city: '프랑크푸르트', country: '독일', cc: 'DE', countryEn: 'Frankfurt, Germany', flag: '🇩🇪', region: 'europe',
+    cat: 'street', src: 'webcam', provider: 'Webcam Skyline Frankfurt',
+    lat: 50.1109, lon: 8.6821, tz: 'Europe/Berlin',
+    tags: ['프랑크푸르트', 'frankfurt', '독일', 'germany', '스카이라인', 'skyline', '마인강', 'main river', '공항'],
+    note: '프랑크푸르트 마천루 스카이라인과 마인강. 라인강 유역 안개와 비구름 이동을 확인할 수 있습니다.'
+  },
+  {
+    id: 'de-frankfurt-city', yt: 'boJCx2dXCko', name: '프랑크푸르트 시내', en: 'Frankfurt am Main City Cam',
+    city: '프랑크푸르트', country: '독일', cc: 'DE', countryEn: 'Frankfurt, Germany', flag: '🇩🇪', region: 'europe',
+    cat: 'street', src: 'creator', provider: 'Marco Schirrmeister',
+    lat: 50.1120, lon: 8.6850, tz: 'Europe/Berlin',
+    tags: ['프랑크푸르트', 'frankfurt', '독일', 'germany', '시내', 'city', '레머', 'römer', '마인강'],
+    note: '프랑크푸르트 구시가지와 강변 도로를 함께 비추는 24시간 카메라.'
+  },
+  {
+    id: 'de-munich-marienplatz', yt: 'VAS9A0LRGHA', name: '뮌헨 마리엔플라츠', en: 'Marienplatz, Munich (LUDWIG BECK)',
+    city: '뮌헨', country: '독일', cc: 'DE', countryEn: 'Munich, Germany', flag: '🇩🇪', region: 'europe',
+    cat: 'street', src: 'local', provider: 'LUDWIG BECK(공식)',
+    lat: 48.1374, lon: 11.5755, tz: 'Europe/Berlin',
+    tags: ['뮌헨', 'munich', 'münchen', '마리엔플라츠', 'marienplatz', '신시청사', '독일', 'germany', '바이에른', 'bavaria'],
+    note: '뮌헨 마리엔플라츠 신시청사 앞 광장. 백화점 LUDWIG BECK이 운영하는 공식 카메라로, 크리스마스 마켓 철 혼잡도도 보입니다.'
+  },
+  {
+    id: 'ae-dubai-downtown', yt: '22AyE6m7WhA', name: '두바이 다운타운 · 부르즈 할리파', en: 'Downtown Dubai & Burj Khalifa',
+    city: '두바이', country: '아랍에미리트', cc: 'AE', countryEn: 'Dubai, UAE', flag: '🇦🇪', region: 'mideast',
+    cat: 'street', src: 'creator', provider: 'UinDubai',
+    lat: 25.1972, lon: 55.2744, tz: 'Asia/Dubai',
+    tags: ['두바이', 'dubai', '부르즈 할리파', 'burj khalifa', '다운타운', 'downtown', 'uae', '아랍에미리트', '두바이몰', 'dubai mall'],
+    note: '부르즈 할리파와 두바이몰 주변을 걷는 4K 도보 라이브. 사막 도시의 한낮 더위와 야간 경관을 비교할 수 있습니다.'
+  },
+  {
+    id: 'ae-dubai-citycenter', yt: 'VFM5MOSS8Ok', name: '두바이 시티센터 야경', en: 'Dubai City Center Evening Walk',
+    city: '두바이', country: '아랍에미리트', cc: 'AE', countryEn: 'Dubai, UAE', flag: '🇦🇪', region: 'mideast',
+    cat: 'street', src: 'creator', provider: 'CitiesTouch',
+    lat: 25.1930, lon: 55.2770, tz: 'Asia/Dubai',
+    tags: ['두바이', 'dubai', '시티센터', 'city center', '야경', 'night', 'uae', '아랍에미리트', 'burj khalifa'],
+    note: '두바이 다운타운 저녁 거리를 걷는 라이브. 분수쇼 시간대 인파와 습도를 가늠할 수 있습니다.'
+  },
+
   /* ───────────── 공식 라이브 바로가기(외부 링크 전용) ───────────── */
   {
     id: 'ext-topis', mode: 'external', name: '서울시 TOPIS 교통 CCTV', en: 'Seoul TOPIS Traffic CCTV',
@@ -662,5 +1202,14 @@ window.CAMERA_DATA = [
     tags: ['일본', 'japan', 'jartic', '도로', '교통', '고속도로', 'highway', '도쿄', 'tokyo'],
     url: 'https://www.jartic.or.jp/',
     note: '일본 전국 주요 도로의 공공 교통정보. 공식 페이지 링크만 제공합니다.'
+  },
+  {
+    id: 'ext-macau-dsat', mode: 'external', name: '마카오 교통사무국 실시간 교통영상', en: 'Macao DSAT Live Traffic Cameras',
+    city: '마카오', country: '마카오', cc: 'MO', countryEn: 'Macao', flag: '🇲🇴', region: 'asia',
+    cat: 'traffic', src: 'public', provider: '마카오 특별행정구 교통사무국(DSAT)',
+    lat: 22.1987, lon: 113.5439, tz: 'Asia/Macau',
+    tags: ['마카오', 'macau', 'macao', '澳門', '교통', 'traffic', 'cctv', '도로', '세나도 광장', 'senado square', '카지노', 'cotai'],
+    url: 'https://www.dsat.gov.mo/dsat/realtime.aspx',
+    note: '마카오 교통사무국이 공개하는 실시간 교통 영상(5초 갱신·일부 구간 생방송). 유튜브 임베드가 가능한 시내 캠이 없어 공식 페이지로만 연결합니다.'
   }
 ];

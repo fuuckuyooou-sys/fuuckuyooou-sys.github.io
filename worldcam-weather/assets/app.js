@@ -1,7 +1,7 @@
 /* 월드캠 웨더 — app logic
- * - 카메라 목록/필터/검색
+ * - 카메라 목록/지역·국가·분류 필터/검색
  * - Open-Meteo 현재 날씨(기온·상태·풍속·습도·현지 시각)
- * - YouTube IFrame API 기반 수신 상태 확인(오프라인/임베드 제한 자동 배지)
+ * - YouTube IFrame API(youtube-nocookie 호스트) 기반 수신 상태 확인(오프라인/임베드 제한 자동 배지)
  */
 (function () {
   'use strict';
@@ -12,7 +12,7 @@
   if (new URLSearchParams(location.search).get('demo') === 'offline') {
     CAMS.unshift({
       id: 'demo-offline', yt: 'zzzzzzzzzzz', name: '(점검용) 재생 불가 카메라', en: 'offline test card',
-      city: '테스트', country: '점검', countryEn: 'test', flag: '🧪', region: 'kr',
+      city: '테스트', country: '점검', cc: 'ZZ', countryEn: 'test', flag: '🧪', region: 'asia',
       cat: 'street', src: 'creator', provider: '월드캠 웨더 점검',
       lat: 37.55, lon: 126.99, tz: 'Asia/Seoul', tags: ['테스트', 'test'],
       marqueeTest: true, note: '수신 상태 자동 감지 점검용 카드입니다.'
@@ -32,11 +32,12 @@
   };
   const REGIONS = [
     { key: 'all', label: '전체' },
-    { key: 'kr', label: '🇰🇷 한국' },
-    { key: 'jp', label: '🇯🇵 일본' },
-    { key: 'us', label: '🇺🇸 미국·캐나다' },
-    { key: 'eu', label: '🇪🇺 유럽' },
-    { key: 'ap', label: '🌏 아시아·오세아니아·남미' }
+    { key: 'asia', label: '🌏 아시아' },
+    { key: 'europe', label: '🌍유럽' },
+    { key: 'americas', label: '🌎 아메리카' },
+    { key: 'oceania', label: '🐨 오세아니아' },
+    { key: 'mideast', label: '🕌 중동' },
+    { key: 'africa', label: '🦁 아프리카' }
   ];
   const CATS = [
     { key: 'all', label: '전체 분류' },
@@ -52,14 +53,30 @@
   const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  const state = { region: 'all', cat: 'all', q: '', sort: 'featured', liveOnly: false };
+  /* ───────── 국가 디렉토리(cc → 이름·국기·지역·개수) ───────── */
+  const COUNTRIES = (function buildCountries() {
+    const map = Object.create(null);
+    CAMS.forEach((c) => {
+      if (!c.cc || c.marqueeTest) return;
+      if (!map[c.cc]) map[c.cc] = { cc: c.cc, name: c.country, flag: c.flag, region: c.region, n: 0 };
+      map[c.cc].n += 1;
+      // 같은 국가 코드에서 지역 표기가 다르면 첫 값을 유지한다(미국·캐나다 공용 국경 캠 등)
+    });
+    return Object.keys(map).map((k) => map[k]).sort((a, b) => {
+      if (b.n !== a.n) return b.n - a.n;
+      return a.name.localeCompare(b.name, 'ko');
+    });
+  })();
+  const COUNTRY_BY_CC = COUNTRIES.reduce((m, c) => (m[c.cc] = c, m), Object.create(null));
+
+  const state = { region: 'all', country: 'all', cat: 'all', q: '', sort: 'featured', liveOnly: false };
   const weather = Object.create(null);   // id -> {temp, code, wind, humidity, feels, isDay, time, tz}
   const status = Object.create(null);    // id -> 'idle'|'checking'|'live'|'ended'|'offline'|'unknown'
 
   CAMS.forEach((c) => { status[c.id] = 'idle'; });
 
   /* ───────── 수신 상태 캐시 ───────── */
-  const CACHE_KEY = 'wcw.status.v4';
+  const CACHE_KEY = 'wcw.status.v5';
   const TTL = { live: 5 * 60 * 1000, ended: 2 * 60 * 1000, offline: 90 * 1000, unknown: 60 * 1000 };
   function loadCache() {
     try {
@@ -91,8 +108,8 @@
     rc.addEventListener('click', (e) => {
       const b = e.target.closest('[data-region]'); if (!b) return;
       state.region = b.dataset.region;
-      $$('[data-region]', rc).forEach((x) => x.setAttribute('aria-selected', x === b));
-      render();
+      state.country = 'all';               // 지역을 고르면 국가 선택은 해제
+      paintRegionChips(); paintCountryChips(); render();
     });
     cc.addEventListener('click', (e) => {
       const b = e.target.closest('[data-cat]'); if (!b) return;
@@ -102,12 +119,58 @@
     });
   }
 
+  function paintRegionChips() {
+    $$('#region-chips [data-region]').forEach((x) => x.setAttribute('aria-selected', x.dataset.region === state.region));
+  }
+
+  /* ───────── 국가별 보기(디렉토리) ───────── */
+  function countryChipsHtml() {
+    const head = `<button type="button" class="chip chip-country${state.country === 'all' ? ' is-on' : ''}" data-country="all" aria-selected="${state.country === 'all'}">🌐 전체 국가 <b>${CAMS.filter((c) => !c.marqueeTest).length}</b></button>`;
+    const list = COUNTRIES.map((c) => {
+      const on = state.country === c.cc;
+      return `<button type="button" class="chip chip-country${on ? ' is-on' : ''}" data-country="${c.cc}" aria-selected="${on}" title="${esc(c.name)} 라이브 캠 ${c.n}곳">
+        <span class="cf" aria-hidden="true">${c.flag}</span><span class="cn">${esc(c.name)}</span><b>${c.n}</b></button>`;
+    }).join('');
+    return head + list;
+  }
+  function paintCountryChips() {
+    const box = $('#country-grid');
+    if (box) box.innerHTML = countryChipsHtml();
+    const head = $('#country-count');
+    if (head) head.textContent = COUNTRIES.length;
+  }
+  function buildCountryDirectory() {
+    const box = $('#country-grid');
+    if (!box) return;
+    paintCountryChips();
+    box.addEventListener('click', (e) => {
+      const b = e.target.closest('[data-country]'); if (!b) return;
+      state.country = b.dataset.country;
+      state.region = 'all';                // 국가를 고르면 지역 선택은 해제
+      paintRegionChips(); paintCountryChips(); render();
+      const grid = $('#grid');
+      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    const toggle = $('#country-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        const wrap = $('#country-dir');
+        const open = wrap.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.textContent = open ? '국가 목록 접기 ⌃' : `국가 목록 펼치기 ⌄ (${COUNTRIES.length}개국)`;
+      });
+    }
+  }
+
   /* ───────── 검색 매칭 ───────── */
   function haystack(c) {
-    return [c.name, c.en, c.city, c.country, c.countryEn, c.provider, CAT_LABEL[c.cat], c.note]
+    const co = COUNTRY_BY_CC[c.cc];
+    return [c.name, c.en, c.city, c.country, c.countryEn, c.provider, CAT_LABEL[c.cat], c.note,
+      co ? co.name : '']
       .concat(c.tags || []).join(' ').toLowerCase();
   }
   function matches(c) {
+    if (state.country !== 'all' && c.cc !== state.country) return false;
     if (state.region !== 'all' && c.region !== state.region) return false;
     if (state.cat !== 'all' && c.cat !== state.cat) return false;
     if (state.liveOnly && status[c.id] !== 'live') return false;
@@ -119,8 +182,7 @@
 
   /* ───────── 날씨 표시 ───────── */
   function wxOf(c) { return weather[c.id]; }
-  function localClock(w, c) {
-    // API가 준 현지 시각 문자열(YYYY-MM-DDTHH:mm)을 그대로 사용
+  function localClock(w) {
     if (!w || !w.time) return '–';
     const m = /T(\d{2}):(\d{2})/.exec(w.time);
     return m ? m[1] + ':' + m[2] : '–';
@@ -135,7 +197,7 @@
     return `<div class="wx">
         <span class="wx-icon" aria-hidden="true">${meta[1]}</span>
         <span class="wx-main"><span class="wx-temp">${fmtTemp(w.temp)}</span><span class="wx-desc">${esc(meta[0])}</span></span>
-        <span class="wx-side">풍속 <b>${w.wind == null ? '–' : (Math.round(w.wind * 10) / 10)}</b>m/s<br>현지 <b>${localClock(w, c)}</b> ${day}</span>
+        <span class="wx-side">풍속 <b>${w.wind == null ? '–' : (Math.round(w.wind * 10) / 10)}</b>m/s<br>현지 <b>${localClock(w)}</b> ${day}</span>
       </div>`;
   }
 
@@ -176,19 +238,11 @@
       ${thumb}
       <div class="card-body">
         <h2 class="card-title">${esc(c.name)}</h2>
-        <p class="card-sub">${c.flag} ${esc(c.city)} <span class="sep">·</span> ${esc(c.country)} <span class="sep">·</span> ${esc(c.provider)}</p>
+        <p class="card-sub">${c.flag} ${esc(c.country)} <span class="sep">·</span> ${esc(c.city)} <span class="sep">·</span> ${esc(c.provider)}</p>
         ${wxCard(c)}
         <div class="card-foot">${foot}</div>
       </div>
     </article>`;
-  }
-
-  function adCardHtml() {
-    return `<aside class="card" aria-label="광고 영역" style="display:grid;place-items:center;min-height:180px;border-style:dashed;background:rgba(255,255,255,.015)">
-      <div style="padding:18px;text-align:center;color:var(--txt-3);font-size:12px;line-height:1.6">
-        <span class="ad-tag">AD</span><br>여행 제휴·광고 슬롯<br><span style="font-size:11px">(애드센스 심사 전 · 비어 있음)</span>
-      </div>
-    </aside>`;
   }
 
   function updateHero() {
@@ -199,8 +253,17 @@
     hero.innerHTML =
       `<span class="stat"><span class="dot"></span>수신 확인 <b>${liveN}</b></span>
        <span class="stat">오프라인·종료 <b>${offN}</b></span>
-       <span class="stat">등록 카메라 <b>${CAMS.length}</b>곳</span>
+       <span class="stat">등록 카메라 <b>${CAMS.length}</b>곳 · <b>${COUNTRIES.length}</b>개국</span>
        <span class="stat">날씨 <b>Open-Meteo</b> 실시간</span>`;
+  }
+
+  function scopeLabel() {
+    if (state.country !== 'all') {
+      const c = COUNTRY_BY_CC[state.country];
+      return c ? `${c.flag} ${c.name}` : '선택 국가';
+    }
+    const r = REGIONS.filter((x) => x.key === state.region)[0];
+    return r && r.key !== 'all' ? r.label : '';
   }
 
   function render() {
@@ -220,17 +283,18 @@
       ordered.sort((a, b) => a.name.localeCompare(b.name, 'ko'));
     }
     const grid = $('#grid');
-    grid.innerHTML = ordered.map((c, i) => cardHtml(c) + (i === 7 && ordered.length > 10 ? adCardHtml() : '')).join('');
+    grid.innerHTML = ordered.map((c) => cardHtml(c)).join('');
     grid.setAttribute('aria-busy', 'false');
     $('#empty').hidden = ordered.length > 0;
 
-    $('#result-count').innerHTML = `<b>${ordered.length}</b>곳 표시 중 · 전체 ${CAMS.length}곳 (임베드 ${CAMS.filter((c) => c.mode !== 'external').length} · 공식 링크 ${CAMS.filter((c) => c.mode === 'external').length})`;
+    const scope = scopeLabel();
+    $('#result-count').innerHTML = `<b>${ordered.length}</b>곳 표시 중${scope ? ' · ' + esc(scope) : ''} · 전체 ${CAMS.length}곳 (임베드 ${CAMS.filter((c) => c.mode !== 'external').length} · 공식 링크 ${CAMS.filter((c) => c.mode === 'external').length})`;
     updateHero();
 
     observeCards();
   }
 
-  /* ───────── 수신 상태: YouTube IFrame API ───────── */
+  /* ───────── 수신 상태: YouTube IFrame API (youtube-nocookie 호스트) ───────── */
   let ytReady = null;
   const queue = [];
   let busy = false;
@@ -276,6 +340,7 @@
       if (!YT || !YT.Player) return finish('unknown', 'noapi');
       try {
         p = new YT.Player(host, {
+          host: 'https://www.youtube-nocookie.com',
           videoId: id,
           playerVars: { autoplay: 1, mute: 1, controls: 0, playsinline: 1, rel: 0, origin: location.origin },
           events: {
@@ -438,7 +503,7 @@
       <div class="kpi"><span>풍속</span><b>${w.wind == null ? '–' : (Math.round(w.wind * 10) / 10)} m/s</b></div>
       <div class="kpi"><span>체감</span><b>${fmtTemp(w.feels)}</b></div>
       <div class="kpi"><span>습도</span><b>${w.humidity == null ? '–' : w.humidity + '%'}</b></div>
-      <div class="kpi"><span>현지 시각</span><b>${localClock(w, c)} ${w.isDay ? '☀️' : '🌙'}</b></div>`;
+      <div class="kpi"><span>현지 시각</span><b>${localClock(w)} ${w.isDay ? '☀️' : '🌙'}</b></div>`;
   }
 
   function openPlayer(id) {
@@ -448,9 +513,10 @@
     modal.hidden = false;
     document.body.style.overflow = 'hidden';
     $('#pm-title').textContent = c.name;
-    $('#pm-sub').textContent = `${c.flag} ${c.city} · ${c.country} — ${c.provider}`;
+    $('#pm-sub').textContent = `${c.flag} ${c.country} · ${c.city} — ${c.provider}`;
     $('#pm-note').textContent = c.note || '';
     $('#pm-meta').innerHTML = `
+      <dt>국가</dt><dd>${c.flag} ${esc(c.country)}</dd>
       <dt>분류</dt><dd>${CAT_LABEL[c.cat] || '–'}</dd>
       <dt>출처</dt><dd>${SRC_LABEL[c.src] || '제공기관'} · ${esc(c.provider)}</dd>
       <dt>좌표</dt><dd>${c.lat.toFixed(4)}, ${c.lon.toFixed(4)} · ${esc(c.tz)}</dd>
@@ -469,7 +535,7 @@
       ytLink.hidden = false;
       extLink.hidden = true;
       ytLink.href = 'https://www.youtube.com/watch?v=' + c.yt;
-      const src = 'https://www.youtube.com/embed/' + c.yt +
+      const src = 'https://www.youtube-nocookie.com/embed/' + c.yt +
         '?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&origin=' + encodeURIComponent(location.origin);
       holder.innerHTML = `<iframe src="${src}" title="${esc(c.name)} 라이브 영상"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -506,6 +572,7 @@
   /* ───────── 초기화 ───────── */
   function boot() {
     buildChips();
+    buildCountryDirectory();
     loadCache();
     render();
     refreshWeather();

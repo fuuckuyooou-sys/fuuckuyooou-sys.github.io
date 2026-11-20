@@ -295,26 +295,29 @@
   }
 
   function enqueueProbe(id) {
-    if (queue.indexOf(id) >= 0) return;
     if (status[id] !== 'idle') return;
-    queue.push(id);
+    if (queue.some((q) => q.id === id)) return;
+    const cam = CAMS.find((c) => c.id === id);
+    if (!cam || !cam.yt) return;
+    queue.push({ id: id, yt: cam.yt });
     pump();
   }
 
   function pump() {
     if (busy || !queue.length) return;
-    const id = queue.shift();
+    const job = queue.shift();
+    const id = job.id;
     busy = true;
     status[id] = 'checking';
     setStatus(id, 'checking');
-    probeOne(id).then((res) => {
+    probeOne(job.yt).then((res) => {
       status[id] = res === 'live' || res === 'ended' || res === 'offline' ? res : 'unknown';
       setStatus(id, status[id]);
       saveCache();
       busy = false;
-      setTimeout(pump, 700);
+      setTimeout(pump, 600);
     }).catch(() => {
-      status[id] = 'unknown'; setStatus(id, 'unknown'); busy = false; setTimeout(pump, 700);
+      status[id] = 'unknown'; setStatus(id, 'unknown'); busy = false; setTimeout(pump, 600);
     });
   }
 

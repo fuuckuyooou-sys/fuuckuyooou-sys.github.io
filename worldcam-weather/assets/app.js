@@ -239,39 +239,41 @@
     return loadYT().then((YT) => new Promise((resolve) => {
       let done = false;
       let p = null;
+      const dbg = (window.__wcwProbe = window.__wcwProbe || {});
       const host = document.createElement('div');
       host.setAttribute('aria-hidden', 'true');
       host.style.cssText = 'position:fixed;left:-10000px;top:0;width:320px;height:180px;opacity:0;pointer-events:none;overflow:hidden';
       document.body.appendChild(host);
-      const finish = (res) => {
+      const finish = (res, why) => {
         if (done) return; done = true;
         clearTimeout(timer);
+        dbg[id] = res + (why ? ':' + why : '');
         try { if (p && p.destroy) p.destroy(); } catch (e) { /* 무시 */ }
         try { host.remove(); } catch (e) { /* 무시 */ }
         resolve(res);
       };
-      const timer = setTimeout(() => finish('unknown'), 12000);
-      if (!YT || !YT.Player) return finish('unknown');
+      const timer = setTimeout(() => finish('unknown', 'timeout'), 12000);
+      if (!YT || !YT.Player) return finish('unknown', 'noapi');
       try {
         p = new YT.Player(host, {
           videoId: id,
-          playerVars: { autoplay: 0, mute: 1, controls: 0, disablekb: 1, playsinline: 1, rel: 0, origin: location.origin },
+          playerVars: { autoplay: 0, mute: 1, playsinline: 1, rel: 0, origin: location.origin },
           events: {
             onReady: (e) => {
               setTimeout(() => {
                 if (done) return;
                 let d = {};
                 try { d = e.target.getVideoData() || {}; } catch (err) { d = {}; }
-                if (d.isPlayable === false || d.errorCode) return finish('offline');
-                if (d.isLive) return finish('live');
-                if (d.video_id) return finish('ended');
-                finish('unknown');
+                if (d.isPlayable === false || d.errorCode) return finish('offline', 'data' + (d.errorCode || ''));
+                if (d.isLive) return finish('live', 'ok');
+                if (d.video_id) return finish('ended', 'vod');
+                finish('unknown', JSON.stringify(d).slice(0, 120));
               }, 1500);
             },
-            onError: () => finish('offline')
+            onError: (e) => finish('offline', 'code' + (e && e.data))
           }
         });
-      } catch (err) { finish('unknown'); }
+      } catch (err) { finish('unknown', 'throw'); }
     })).catch(() => 'unknown');
   }
 

@@ -48,8 +48,8 @@
   CAMS.forEach((c) => { status[c.id] = 'idle'; });
 
   /* ───────── 수신 상태 캐시 ───────── */
-  const CACHE_KEY = 'wcw.status.v3';
-  const TTL = { live: 5 * 60 * 1000, ended: 5 * 60 * 1000, offline: 90 * 1000, unknown: 60 * 1000 };
+  const CACHE_KEY = 'wcw.status.v4';
+  const TTL = { live: 5 * 60 * 1000, ended: 2 * 60 * 1000, offline: 90 * 1000, unknown: 60 * 1000 };
   function loadCache() {
     try {
       const raw = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');

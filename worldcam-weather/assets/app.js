@@ -239,6 +239,7 @@
     return loadYT().then((YT) => new Promise((resolve) => {
       let done = false;
       let p = null;
+      const pollTimers = [];
       const dbg = (window.__wcwProbe = window.__wcwProbe || {});
       const host = document.createElement('div');
       host.id = 'wcw-probe-' + id;
@@ -248,6 +249,7 @@
       const finish = (res, why) => {
         if (done) return; done = true;
         clearTimeout(timer);
+        pollTimers.forEach((iv) => clearInterval(iv));
         dbg[id] = res + (why ? ':' + why : '');
         try { if (p && p.destroy) p.destroy(); } catch (e) { /* 무시 */ }
         try { host.remove(); } catch (e) { /* 무시 */ }
@@ -261,18 +263,21 @@
           playerVars: { autoplay: 1, mute: 1, controls: 0, playsinline: 1, rel: 0, origin: location.origin },
           events: {
             onReady: (e) => {
-              setTimeout(() => {
-                if (done) return;
-                let d = {};
-                try { d = e.target.getVideoData() || {}; } catch (err) { d = {}; }
-                if (d.isPlayable === false || d.errorCode) return finish('offline', 'data' + (d.errorCode || ''));
-                let dur = 0;
-                try { dur = e.target.getDuration() || 0; } catch (err) { dur = 0; }
-                if (d.isLive === true) return finish('live', 'isLive');
-                if (dur > 2) return finish('ended', 'dur' + Math.round(dur));
-                if (d.video_id) return finish('live', 'live0');
-                finish('unknown', JSON.stringify(d).slice(0, 120));
-              }, 1500);
+              // 라이브는 재생이 시작된 뒤에 getVideoData().isLive가 true가 된다.
+              // (DVR이 있는 24시간 라이브는 길이가 수백만 초로 나오므로 길이로는 판정할 수 없다.)
+              try { e.target.playVideo(); } catch (err) { /* 무시 */ }
+              let n = 0;
+              const iv = setInterval(() => {
+                if (done) { clearInterval(iv); return; }
+                n++;
+                let d = {}, st = -1;
+                try { d = e.target.getVideoData() || {}; st = e.target.getPlayerState(); } catch (err) { return; }
+                if (d.isPlayable === false || d.errorCode) { clearInterval(iv); return finish('offline', 'data' + (d.errorCode || '')); }
+                if (d.isLive === true) { clearInterval(iv); return finish('live', 'isLive'); }
+                if (st === 1 && n >= 3 && d.isLive === false) { clearInterval(iv); return finish('ended', 'vod'); }
+                if (n >= 16) { clearInterval(iv); finish('unknown', 'nodata'); }
+              }, 500);
+              pollTimers.push(iv);
             },
             onError: (e) => finish('offline', 'code' + (e && e.data))
           }

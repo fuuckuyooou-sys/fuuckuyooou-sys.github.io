@@ -241,6 +241,7 @@
       let p = null;
       const dbg = (window.__wcwProbe = window.__wcwProbe || {});
       const host = document.createElement('div');
+      host.id = 'wcw-probe-' + id;
       host.setAttribute('aria-hidden', 'true');
       host.style.cssText = 'position:fixed;left:-10000px;top:0;width:320px;height:180px;opacity:0;pointer-events:none;overflow:hidden';
       document.body.appendChild(host);
@@ -273,7 +274,7 @@
             onError: (e) => finish('offline', 'code' + (e && e.data))
           }
         });
-      } catch (err) { finish('unknown', 'throw'); }
+      } catch (err) { finish('unknown', 'throw:' + (err && err.message ? err.message : err)); }
     })).catch(() => 'unknown');
   }
 

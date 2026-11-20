@@ -48,13 +48,16 @@
   CAMS.forEach((c) => { status[c.id] = 'idle'; });
 
   /* ───────── 수신 상태 캐시 ───────── */
-  const CACHE_KEY = 'wcw.status.v2';
+  const CACHE_KEY = 'wcw.status.v3';
+  const TTL = { live: 5 * 60 * 1000, ended: 5 * 60 * 1000, offline: 90 * 1000, unknown: 60 * 1000 };
   function loadCache() {
     try {
       const raw = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
       const now = Date.now();
       Object.keys(raw).forEach((id) => {
-        if (raw[id] && now - raw[id].t < STATUS_TTL && status[id] !== undefined) status[id] = raw[id].s;
+        const e = raw[id];
+        if (!e || status[id] === undefined) return;
+        if (now - e.t < (TTL[e.s] || STATUS_TTL)) status[id] = e.s;
       });
     } catch (e) { /* 캐시 없이 진행 */ }
   }

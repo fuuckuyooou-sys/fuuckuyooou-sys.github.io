@@ -6,7 +6,18 @@
 (function () {
   'use strict';
 
-  const CAMS = window.CAMERA_DATA || [];
+  const CAMS = (window.CAMERA_DATA || []).slice();
+  // 점검용: ?demo=offline 이면 실제로 재생할 수 없는 영상 1개를 목록 맨 앞에 넣어
+  // '접속 불가 / 오프라인' 배지가 자동으로 붙는지 확인할 수 있다.
+  if (new URLSearchParams(location.search).get('demo') === 'offline') {
+    CAMS.unshift({
+      id: 'demo-offline', yt: 'zzzzzzzzzzz', name: '(점검용) 재생 불가 카메라', en: 'offline test card',
+      city: '테스트', country: '점검', countryEn: 'test', flag: '🧪', region: 'kr',
+      cat: 'street', src: 'creator', provider: '월드캠 웨더 점검',
+      lat: 37.55, lon: 126.99, tz: 'Asia/Seoul', tags: ['테스트', 'test'],
+      marqueeTest: true, note: '수신 상태 자동 감지 점검용 카드입니다.'
+    });
+  }
   const WMO = {
     0: ['맑음', '☀️'], 1: ['대체로 맑음', '🌤️'], 2: ['구름 조금', '⛅'], 3: ['흐림', '☁️'],
     45: ['안개', '🌫️'], 48: ['짙은 안개', '🌫️'],

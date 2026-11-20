@@ -76,7 +76,7 @@ a:hover{text-decoration:underline}
 
 /* ── 국가별 보기(디렉토리) ──
    애드센스 승인 뒤 광고를 넣을 때는 .ad-slot 규칙을 여기에 되살리면 됩니다(현재 화면에는 광고 박스를 두지 않습니다). */
-.country-dir{margin:14px 0 2px}
+.country-dir{margin:14px auto 2px}
 .cd-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:9px}
 .cd-head h2{margin:0;font-size:14px;letter-spacing:-.01em;color:var(--txt)}
 .cd-num{font-size:12.5px;color:var(--txt-3);font-weight:500;margin-left:4px}

@@ -12,7 +12,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%8D%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://i.ytimg.com">
 <link rel="preconnect" href="https://api.open-meteo.com">
-<link rel="stylesheet" href="assets/style.css?v=20261120a">
+<link rel="stylesheet" href="assets/style.css?v=20261120k">
 </head>
 <body>
 <a class="skip" href="#grid">본문으로 바로가기</a>
@@ -123,7 +123,10 @@
   <div class="modal-card modal-wide">
     <button type="button" class="modal-x" data-close aria-label="닫기">✕</button>
     <div class="pm-body">
-      <div class="pm-player" id="pm-player"></div>
+      <div class="pm-player-wrap">
+        <div class="pm-player" id="pm-player"></div>
+        <p class="pm-under">영상은 <b>원 채널의 공식 YouTube 임베드</b>로 재생됩니다. 재생 전 광고는 원 채널에 귀속되며, 본 사이트는 영상을 저장·재송출하지 않습니다.</p>
+      </div>
       <div class="pm-side">
         <h2 id="pm-title">–</h2>
         <p class="pm-sub" id="pm-sub"></p>
@@ -219,7 +222,7 @@
         <thead><tr><th>출처 유형</th><th>확인한 조건</th><th>표시 방식</th></tr></thead>
         <tbody>
           <tr><td>YouTube 라이브(방송사·지자체·웹캠 운영사)</td><td>YouTube 서비스 약관의 공식 임베드 플레이어 사용 범위, 채널의 임베드 허용 설정</td><td>임베드 재생 + 원본 링크</td></tr>
-          <tr><td>EarthCam · explore.org · feratel 등 웹캠 운영사</td><td>자사 YouTube 채널의 공개 라이브 임베드 허용</td><td>임베드 재생 + 원본 링크</td></tr>
+          <tr><td>EarthCam · explore.org 등 웹캠 운영사</td><td>자사 YouTube 채널의 공개 라이브 임베드 허용</td><td>임베드 재생 + 원본 링크</td></tr>
           <tr><td>서울시 TOPIS 교통 CCTV</td><td>영상 재배포 제한 → 직접 임베드하지 않음</td><td>공식 페이지 바로가기</td></tr>
           <tr><td>부산시설공단 교통정보(유튜브)</td><td>채널은 공식이나 영상 임베드 차단</td><td>원본 영상 바로가기</td></tr>
           <tr><td>일본 JARTIC 도로정보</td><td>공공 교통정보, 재배포 금지</td><td>공식 페이지 바로가기</td></tr>
@@ -239,6 +242,6 @@
 </div>
 
 <script src="assets/cameras.js?v=20261120a"></script>
-<script src="assets/app.js?v=20261120j"></script>
+<script src="assets/app.js?v=20261120k"></script>
 </body>
 </html>

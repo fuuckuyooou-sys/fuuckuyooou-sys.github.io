@@ -411,10 +411,9 @@
       if (old) old.outerHTML = wxCard(c);
     });
     if (playerModalId) paintModalWeather(playerModalId);
-    const first = Object.keys(weather)[0];
-    if (first) {
-      const w = weather[first];
-      $('#wx-stamp').textContent = '날씨 갱신 · Open-Meteo (현지 시각 기준 ' + (w.time || '').replace('T', ' ') + ')';
+    if (Object.keys(weather).length) {
+      const t = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Seoul' });
+      $('#wx-stamp').textContent = '날씨 갱신 ' + t + ' KST · Open-Meteo (카메라 좌표 기준)';
     }
   }
 

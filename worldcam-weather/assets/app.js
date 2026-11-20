@@ -258,7 +258,7 @@
       try {
         p = new YT.Player(host, {
           videoId: id,
-          playerVars: { autoplay: 0, mute: 1, playsinline: 1, rel: 0, origin: location.origin },
+          playerVars: { autoplay: 1, mute: 1, controls: 0, playsinline: 1, rel: 0, origin: location.origin },
           events: {
             onReady: (e) => {
               setTimeout(() => {
@@ -266,8 +266,11 @@
                 let d = {};
                 try { d = e.target.getVideoData() || {}; } catch (err) { d = {}; }
                 if (d.isPlayable === false || d.errorCode) return finish('offline', 'data' + (d.errorCode || ''));
-                if (d.isLive) return finish('live', 'ok');
-                if (d.video_id) return finish('ended', 'vod');
+                let dur = 0;
+                try { dur = e.target.getDuration() || 0; } catch (err) { dur = 0; }
+                if (d.isLive === true) return finish('live', 'isLive');
+                if (dur > 2) return finish('ended', 'dur' + Math.round(dur));
+                if (d.video_id) return finish('live', 'live0');
                 finish('unknown', JSON.stringify(d).slice(0, 120));
               }, 1500);
             },

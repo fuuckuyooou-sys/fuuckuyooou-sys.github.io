@@ -180,6 +180,18 @@
     </aside>`;
   }
 
+  function updateHero() {
+    const liveN = CAMS.filter((c) => status[c.id] === 'live').length;
+    const offN = CAMS.filter((c) => status[c.id] === 'offline' || status[c.id] === 'ended').length;
+    const hero = $('#hero-stats');
+    if (!hero) return;
+    hero.innerHTML =
+      `<span class="stat"><span class="dot"></span>수신 확인 <b>${liveN}</b></span>
+       <span class="stat">오프라인·종료 <b>${offN}</b></span>
+       <span class="stat">등록 카메라 <b>${CAMS.length}</b>곳</span>
+       <span class="stat">날씨 <b>Open-Meteo</b> 실시간</span>`;
+  }
+
   function render() {
     const list = CAMS.filter(matches);
     let ordered = list.slice();
@@ -201,14 +213,8 @@
     grid.setAttribute('aria-busy', 'false');
     $('#empty').hidden = ordered.length > 0;
 
-    const liveN = CAMS.filter((c) => status[c.id] === 'live').length;
-    const offN = CAMS.filter((c) => status[c.id] === 'offline' || status[c.id] === 'ended').length;
     $('#result-count').innerHTML = `<b>${ordered.length}</b>곳 표시 중 · 전체 ${CAMS.length}곳 (임베드 ${CAMS.filter((c) => c.mode !== 'external').length} · 공식 링크 ${CAMS.filter((c) => c.mode === 'external').length})`;
-    $('#hero-stats').innerHTML =
-      `<span class="stat"><span class="dot"></span>수신 확인 <b>${liveN}</b></span>
-       <span class="stat">오프라인·종료 <b>${offN}</b></span>
-       <span class="stat">등록 카메라 <b>${CAMS.length}</b>곳</span>
-       <span class="stat">날씨 <b>Open-Meteo</b> 실시간</span>`;
+    updateHero();
 
     observeCards();
   }
@@ -299,6 +305,7 @@
         ? '방송 종료 · 다시보기로 재생<br><small style="opacity:.75">새 라이브가 시작되면 자동 갱신됩니다</small>'
         : '현재 접속 불가 · 오프라인<br><small style="opacity:.75">원 채널에서 확인해 주세요</small>';
     }
+    updateHero();
     if (state.liveOnly) render();
   }
 

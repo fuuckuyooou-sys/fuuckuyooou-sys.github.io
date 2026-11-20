@@ -212,7 +212,6 @@
 
   /* ───────── 수신 상태: YouTube IFrame API ───────── */
   let ytReady = null;
-  let player = null;
   const queue = [];
   let busy = false;
 
@@ -230,76 +229,47 @@
     return ytReady;
   }
 
-  function ensurePlayer() {
-    if (player) return Promise.resolve(player);
-    return loadYT().then((YT) => {
-      if (!YT || !YT.Player) throw new Error('iframe api unavailable');
-      return new Promise((resolve, reject) => {
-        const host = document.createElement('div');
-        host.id = 'wcw-probe';
-        host.setAttribute('aria-hidden', 'true');
-        host.style.cssText = 'position:fixed;left:-10000px;top:0;width:320px;height:180px;overflow:hidden;pointer-events:none;opacity:0';
-        document.body.appendChild(host);
-        const inner = document.createElement('div');
-        host.appendChild(inner);
-        const p = new YT.Player(inner, {
-          width: 320, height: 180,
-          playerVars: { autoplay: 0, controls: 0, disablekb: 1, playsinline: 1, mute: 1, rel: 0 },
-          events: {
-            onReady: () => { player = p; resolve(p); },
-            onError: () => { if (pending) pending.err = true; }
-          }
-        });
-        setTimeout(() => { if (!player) { try { player = p; } catch (e) {} resolve(p); } }, 6000);
-      });
-    });
-  }
-
-  let pending = null;
-
+  /* 카메라 1곳의 수신 상태 확인.
+   * 영상마다 플레이어를 새로 만들어 getVideoData()의 isLive·isPlayable로 판정한다.
+   * (오프스크린 1대를 재사용하면 첫 오류 뒤 플레이어가 잠겨 이후 카메라가 모두 오프라인으로 잘못 표시된다.) */
   function probeOne(id) {
-    return ensurePlayer().then((p) => new Promise((resolve) => {
+    return loadYT().then((YT) => new Promise((resolve) => {
       let done = false;
+      let p = null;
+      const host = document.createElement('div');
+      host.setAttribute('aria-hidden', 'true');
+      host.style.cssText = 'position:fixed;left:-10000px;top:0;width:320px;height:180px;opacity:0;pointer-events:none;overflow:hidden';
+      document.body.appendChild(host);
       const finish = (res) => {
         if (done) return; done = true;
         clearTimeout(timer);
-        if (pending === ctx) pending = null;
+        try { if (p && p.destroy) p.destroy(); } catch (e) { /* 무시 */ }
+        try { host.remove(); } catch (e) { /* 무시 */ }
         resolve(res);
       };
-      const ctx = { err: false, id: id };
-      pending = ctx;
-      const timer = setTimeout(() => finish('unknown'), 8000);
-      const onState = (e) => {
-        if (done || settled) return;
-        if (e.data === 5 || e.data === 1 || e.data === 3) { // cued / playing / buffering
-          settled = true;
-          // 메타데이터 직후에는 길이가 0으로 보일 수 있어 한 박자 뒤에 판정한다.
-          setTimeout(() => {
-            let dur = 0;
-            try { dur = p.getDuration() || 0; } catch (err) { dur = 0; }
-            finish(dur > 2 ? 'ended' : 'live');
-          }, 700);
-        }
-      };
-      let settled = false;
-      const onErr = () => finish('offline');
+      const timer = setTimeout(() => finish('unknown'), 12000);
+      if (!YT || !YT.Player) return finish('unknown');
       try {
-        if (p.addEventListener) {
-          p.addEventListener('onStateChange', onState);
-          p.addEventListener('onError', onErr);
-        }
-      } catch (e) { /* 아래 cue 실패로 처리 */ }
-      try {
-        p.cueVideoById({ videoId: id });
-      } catch (e) {
-        finish('unknown');
-      }
-      const iv = setInterval(() => {
-        if (done) { clearInterval(iv); return; }
-        if (ctx.err) { clearInterval(iv); finish('offline'); }
-      }, 300);
-      setTimeout(() => clearInterval(iv), 12000);
-    }));
+        p = new YT.Player(host, {
+          videoId: id,
+          playerVars: { autoplay: 0, mute: 1, controls: 0, disablekb: 1, playsinline: 1, rel: 0, origin: location.origin },
+          events: {
+            onReady: (e) => {
+              setTimeout(() => {
+                if (done) return;
+                let d = {};
+                try { d = e.target.getVideoData() || {}; } catch (err) { d = {}; }
+                if (d.isPlayable === false || d.errorCode) return finish('offline');
+                if (d.isLive) return finish('live');
+                if (d.video_id) return finish('ended');
+                finish('unknown');
+              }, 1500);
+            },
+            onError: () => finish('offline')
+          }
+        });
+      } catch (err) { finish('unknown'); }
+    })).catch(() => 'unknown');
   }
 
   function setStatus(id, s) {
@@ -414,7 +384,6 @@
 
   /* ───────── 플레이어 모달 ───────── */
   let playerModalId = null;
-  let modalPlayer = null;
 
   function paintModalWeather(id) {
     const c = CAMS.find((x) => x.id === id); if (!c) return;
@@ -459,25 +428,11 @@
       ytLink.hidden = false;
       extLink.hidden = true;
       ytLink.href = 'https://www.youtube.com/watch?v=' + c.yt;
-      holder.innerHTML = '';
-      ensurePlayer().then((YT) => {
-        // 상태 확인용 플레이어와 별개로, 모달에는 실제 재생 플레이어를 만든다.
-        modalPlayer = new YT.Player(holder, {
-          videoId: c.yt,
-          playerVars: { autoplay: 1, mute: 1, playsinline: 1, rel: 0, modestbranding: 1 },
-          events: {
-            onError: () => {
-              holder.innerHTML = `<div class="pm-fallback">현재 재생할 수 없습니다(오프라인·비공개·임베드 제한).<br><a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">원본 채널에서 확인하기 ↗</a></div>`;
-              status[c.id] = 'offline'; setStatus(c.id, 'offline'); saveCache();
-            },
-            onReady: (e) => {
-              let dur = 0; try { dur = e.target.getDuration() || 0; } catch (err) {}
-              const s = dur > 2 ? 'ended' : 'live';
-              status[c.id] = s; setStatus(c.id, s); saveCache();
-            }
-          }
-        });
-      }).catch(() => { holder.innerHTML = '<div class="pm-fallback">플레이어를 불러오지 못했습니다.</div>'; });
+      const src = 'https://www.youtube.com/embed/' + c.yt +
+        '?autoplay=1&mute=1&playsinline=1&rel=0&modestbranding=1&origin=' + encodeURIComponent(location.origin);
+      holder.innerHTML = `<iframe src="${src}" title="${esc(c.name)} 라이브 영상"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
     }
   }
 
@@ -486,8 +441,6 @@
     modal.hidden = true;
     document.body.style.overflow = '';
     playerModalId = null;
-    try { if (modalPlayer && modalPlayer.destroy) modalPlayer.destroy(); } catch (e) {}
-    modalPlayer = null;
     $('#pm-player').innerHTML = '';
   }
 

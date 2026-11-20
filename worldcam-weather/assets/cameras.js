@@ -1039,12 +1039,12 @@ window.CAMERA_DATA = [
     note: '미시간호를 낀 시카고 레이크프론트와 네이비 피어. 겨울 한파·바람 상황을 확인하기 좋습니다.'
   },
   {
-    id: 'us-chicago-skyline', yt: '2Y8DA2nhynw', name: '시카고 스카이라인', en: 'Chicago Skyline',
+    id: 'us-chicago-midway', yt: 'EiUyBIcG4fQ', name: '시카고 미드웨이 공항', en: 'Midway Airport, Chicago',
     city: '시카고', country: '미국', cc: 'US', countryEn: 'Chicago, USA', flag: '🇺🇸', region: 'americas',
-    cat: 'street', src: 'creator', provider: 'Chicago Southern Skyline',
-    lat: 41.8781, lon: -87.6298, tz: 'America/Chicago',
-    tags: ['시카고', 'chicago', '스카이라인', 'skyline', '윌리스타워', 'willis tower', '미국', 'usa', '일리노이'],
-    note: '시카고 다운타운 스카이라인을 담은 24시간 카메라. 호수 안개와 일몰 시간대가 잘 보입니다.'
+    cat: 'traffic', src: 'webcam', provider: 'EarthCam',
+    lat: 41.7868, lon: -87.7522, tz: 'America/Chicago',
+    tags: ['시카고', 'chicago', '미드웨이', 'midway', '공항', 'airport', '미국', 'usa', '일리노이', 'illinois'],
+    note: '시카고 미드웨이 공항 활주로와 터미널. 겨울 폭설철 결항·지연 여부를 확인하는 데 쓰입니다.'
   },
   {
     id: 'us-seattle-lake', yt: 'NCzKkn0wD30', name: '시애틀 워싱턴호', en: 'Lake Washington, Seattle (UW)',

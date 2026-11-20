@@ -337,10 +337,17 @@
   }
 
   let io = null;
+  let probeKick = false;
+  function startProbeAll() {
+    CAMS.filter((c) => c.mode !== 'external').forEach((c) => enqueueProbe(c.id));
+  }
   function observeCards() {
-    if (!('IntersectionObserver' in window)) {
-      CAMS.filter((c) => c.mode !== 'external').forEach((c) => enqueueProbe(c.id));
-      return;
+    if (!('IntersectionObserver' in window)) { startProbeAll(); return; }
+    // 화면에 보이는 카드는 즉시, 브라우저가 교차 관찰을 지연하는 환경(백그라운드 탭 등)에서는
+    // 3초 뒤 전체를 순차 확인한다.
+    if (!probeKick) {
+      probeKick = true;
+      setTimeout(() => { if (!Object.keys(window.__wcwProbe || {}).length && !busy) startProbeAll(); }, 3000);
     }
     if (!io) {
       io = new IntersectionObserver((entries) => {
